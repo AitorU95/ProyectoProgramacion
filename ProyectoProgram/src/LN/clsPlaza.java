@@ -20,7 +20,7 @@ public class clsPlaza extends clsZona {
 	 * Getters y setters de la clase
 	 */
 	
-	public boolean EstaLaPlazaOcupada() {
+	public boolean getPlazaOcupada() {
 		return PlazaOcupada;
 	}
 	

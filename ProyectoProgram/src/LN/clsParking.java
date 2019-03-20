@@ -53,6 +53,15 @@ public class clsParking {
 	public void setPlazas(int plazas) {
 		Plazas = plazas;
 	}
+
+	public String getZona() {
+		return Zona;
+	}
+
+	public void setZona(String zona) {
+		Zona = zona;
+	}
+	
 	
 
 

@@ -8,7 +8,15 @@ package LN;
  */
 public class clsZona extends clsParking {
 	
+	/**
+	 * Atributos de la clase
+	 */
 	private int PlazasZona;
+		
+	/**
+	 * Getters y setters de los atributos
+	 * @return
+	 */
 
 	public int getPlazasZona() {
 		return PlazasZona;

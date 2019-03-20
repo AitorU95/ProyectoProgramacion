@@ -17,11 +17,12 @@ public class clsTipoVehiculo extends clsVehiculo {
 	private boolean Moto;
 	
 	
+	
 	/**
 	 * Getters y setters de la clase
 	 */
 	
-	public boolean esCoche() {
+	public boolean getCoche() {
 		return Coche;
 	}
 	
@@ -29,7 +30,7 @@ public class clsTipoVehiculo extends clsVehiculo {
 		Coche = coche;
 	}
 	
-	public boolean esMoto() {
+	public boolean getMoto() {
 		return Moto;
 	}
 	

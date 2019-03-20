@@ -10,7 +10,6 @@ package LN;
 
 public class clsVehiculo extends clsPlaza{
 	
-	
 	/**
 	 * Atributos de la clase
 	 */
@@ -30,7 +29,7 @@ public class clsVehiculo extends clsPlaza{
 		TipoVehiculo = tipoVehiculo;
 	}
 	
-	public boolean isMinusvalido() {
+	public boolean getMinusvalido() {
 		return Minusvalido;
 	}
 	
