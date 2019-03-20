@@ -18,11 +18,6 @@ public class clsVehiculo extends clsPlaza{
 	private String TipoVehiculo;
 	private boolean Minusvalido;
 	
-	public clsVehiculo(int TipoVehiculo, boolean Minusvalio, int Matricula) {
-		
-		
-	}
-	
 	/**
 	 * Getters y setter de la clase
 	 */
