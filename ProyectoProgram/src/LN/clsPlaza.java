@@ -7,7 +7,7 @@ package LN;
  *
  */
 
-public class clsPlaza extends clsParking {
+public class clsPlaza extends clsZona {
 	
 	/**
 	 * Atributos de la clase
