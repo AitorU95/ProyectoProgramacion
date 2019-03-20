@@ -7,5 +7,18 @@ package LN;
  *
  */
 public class clsZona extends clsParking {
+	
+	private int PlazasZona;
+
+	public int getPlazasZona() {
+		return PlazasZona;
+	}
+
+	public void setPlazasZona(int plazasZona) {
+		PlazasZona = plazasZona;
+	}
+	
+	
+	
 
 }

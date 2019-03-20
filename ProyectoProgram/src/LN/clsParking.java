@@ -16,11 +16,12 @@ public class clsParking {
 	private int PlazasMotos;
 	private int PlazasMinusvalidos;
 	private int Plazas;
+	private String Zona;
 	
 	/**
 	 * Getters y setters de los atributos
 	 */
-	
+
 	public int getPlazasCoches() {
 		return PlazasCoches;
 	}
