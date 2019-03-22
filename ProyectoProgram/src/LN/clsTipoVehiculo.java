@@ -9,6 +9,8 @@ package LN;
 
 public class clsTipoVehiculo extends clsVehiculo {
 	
+	
+
 	/**
 	 * Atributos de la clase
 	 */
@@ -16,7 +18,12 @@ public class clsTipoVehiculo extends clsVehiculo {
 	private boolean Coche;
 	private boolean Moto;
 	
-	
+	public clsTipoVehiculo(String tipovehiculo, boolean minusvalido, String matricula, String letrazona, boolean coche, boolean moto) {
+		super(tipovehiculo, minusvalido, matricula, letrazona);
+		this.Coche = coche;
+		this.Moto = moto;
+		
+	}
 	
 	/**
 	 * Getters y setters de la clase

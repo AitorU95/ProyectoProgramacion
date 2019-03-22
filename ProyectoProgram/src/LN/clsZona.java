@@ -6,7 +6,7 @@ package LN;
  * @author Industria 4.0
  *
  */
-public class clsZona extends clsParking {
+public abstract class clsZona extends clsParking {
 	
 	/**
 	 * Atributos de la clase
@@ -25,6 +25,10 @@ public class clsZona extends clsParking {
 	public void setPlazasZona(int plazasZona) {
 		PlazasZona = plazasZona;
 	}
+	
+	
+
+	
 	
 	
 	

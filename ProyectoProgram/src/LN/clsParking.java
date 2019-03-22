@@ -1,12 +1,14 @@
 package LN;
 
+import Comun.itfProperty;
+
 /**
  * Clase Principal parking, la cual contiene la informacion general sobre el parking.
  * Contiene el numero total de plazas por tipo, al igual que el numero de pisos totales.
  * @author
  *
  */
-public class clsParking {
+public abstract class clsParking implements itfProperty {
 	
 	/**
 	 * Atributos de la clase

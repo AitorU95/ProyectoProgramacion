@@ -17,6 +17,14 @@ public class clsVehiculo extends clsPlaza{
 	private String TipoVehiculo;
 	private boolean Minusvalido;
 	
+	public clsVehiculo(String tipovehiculo, boolean minusvalido, String matricula, String letrazona) {
+		super(matricula, letrazona);
+		
+		this.TipoVehiculo = tipovehiculo;
+		this.Minusvalido = minusvalido;
+		
+	}
+	
 	/**
 	 * Getters y setter de la clase
 	 */
@@ -37,6 +45,19 @@ public class clsVehiculo extends clsPlaza{
 		Minusvalido = minusvalido;
 	}
 	
-	
+	public Object getProperty(String propiedad) {
+		
+		switch(propiedad) {
+			case "TipoVehiculo": return this.getTipoVehiculo();
+			case "Minusvalido": return this.getMinusvalido();
+			case "MatriculaVehiculo": return this.getMatriculaVehiculo();
+			
+			
+		}
+		
+		return getMatriculaVehiculo();
+		
+		
+	}
 
 }

@@ -2,6 +2,8 @@ package LN;
 
 import java.util.ArrayList;
 
+import Comun.itfProperty;
+
 /**
  * Clase que sirve de enlace entre la LP y la LN
  */
@@ -10,24 +12,36 @@ import java.util.ArrayList;
 public class clsGestorLN 
 {
 	
-	ArrayList<clsPlaza> listaPlazas;
+	ArrayList<clsVehiculo> listaVehiculos;
 	
 	public clsGestorLN()
 	{
-		listaPlazas=new ArrayList<clsPlaza>();
+		listaVehiculos = new ArrayList<clsVehiculo>();
 		
 	}
 	
 	
-	public void AltaPlaza (String mat, int numPlaza)
+	public void AltaVehiculo (String tipovehiculo, boolean minusvalido, String matricula, String letrazona)
 	{
 		
-		clsPlaza objPlaza = new clsPlaza();
-		objPlaza.setMatriculaVehiculo(mat);
-		objPlaza.setPlazasZona(numPlaza);
+		clsVehiculo objVehiculo;
+		objVehiculo = new clsVehiculo(tipovehiculo, minusvalido, matricula, letrazona);
+		listaVehiculos.add(objVehiculo);
 		
-		listaPlazas.add(objPlaza);
 		
+	}
+	
+	public ArrayList<itfProperty> MostrarVehiculos(){
+		
+		ArrayList<itfProperty> retorno;
+		
+		retorno = new ArrayList <itfProperty>();
+		
+		for(clsPlaza a:listaVehiculos) {
+			retorno.add(a);
+		}
+		
+		return retorno;
 	}
 	
 
