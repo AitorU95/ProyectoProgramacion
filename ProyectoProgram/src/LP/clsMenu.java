@@ -17,10 +17,15 @@ public class clsMenu
 	
 	public static void MenuPrincipal ()
 	{
+		
+		
 		clsGestorLN objGestor = new clsGestorLN();
 		
 		int op=0;
 		
+		/**
+		 * Creamos el cuerpo del programa que mostrara las opciones a efectuar y que el usuario sigue paso a paso
+		 */
 		
 		System.out.println("Bienvenid@ al programa");
 		
@@ -49,6 +54,11 @@ public class clsMenu
 		
 	}
 	
+	/**
+	 * metodo que permite darle la informacion para crear un nuevo vehiculo
+	 * @param objg
+	 */
+	
 	private static void NuevoVehiculo(clsGestorLN objg)
 	{
 		
@@ -74,6 +84,12 @@ public class clsMenu
 		objg.AltaVehiculo(tipovehiculo, minusvalido, matricula, letra);
 		
 	}
+	
+	/**
+	 * metodo que añade los vehiculos al array del gestor y los muestra por pantalla
+	 * 
+	 * @param objG
+	 */
 	
 	public static void MostrarDatos(clsGestorLN objG) {
 		
