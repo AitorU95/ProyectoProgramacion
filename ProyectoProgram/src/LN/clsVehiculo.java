@@ -77,14 +77,17 @@ public class clsVehiculo implements itfProperty
 	public Object getProperty(String propiedad)
 	{
 		
-		switch(propiedad) {
+		switch(propiedad) 
+		{
 			case "Matricula": return this.getMatricula();
 			case "Minusvalido": return this.isMinusvalido();
 			case "PlazaVehiculo": return this.getPlazaVehiculo();
-			case "ZonaVehiculo" : return this.getZonaVehiculo(); 
+			case "ZonaVehiculo" : return this.getZonaVehiculo();
+			default: return ""; //lanzar exception runtime
+			
 		}
 		
-		return getMatricula();
+		
 		
 	}
 

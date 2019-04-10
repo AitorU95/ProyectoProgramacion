@@ -17,8 +17,10 @@ public class clsGestorLN
 	 * Creamos un array que guardara los vehiculos
 	 */
 	
-	
+	public static ArrayList<clsParking> listaParking;
 	public static ArrayList<clsVehiculo> listaVehiculos;
+	public static ArrayList<clsZona> listaZonas;
+	public static ArrayList<clsPlaza>listaPlaza;
 	
 	public clsGestorLN()
 	{
@@ -28,18 +30,34 @@ public class clsGestorLN
 	
 	/**
 	 * metodo para dar de alta vehiculos
-	 * @param tipovehiculo
-	 * @param minusvalido
-	 * @param matricula
-	 * @param letrazona
-	 * @throws clsMatriculaVehiculoRepetida 
 	 */
+
 	
-	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letra) throws clsMatriculaVehiculoRepetida
+	public void InsertarDatosParking (String nombre, int plazascoches, int plazasmotos, int plazasminusvalidos, int zonastotales) {
+		
+		clsParking objParking;
+		objParking = new clsParking(nombre, plazascoches, plazasmotos, plazasminusvalidos, zonastotales);
+		listaParking.add(objParking);
+	}
+	
+	
+	public ArrayList<itfProperty> MostrarParkings(){
+		
+		ArrayList<itfProperty> retorno;
+		retorno = new ArrayList <itfProperty>();
+		for(clsParking a:listaParking) {
+			retorno.add(a);
+		}
+		return retorno;
+	}
+	
+	
+	
+	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida
 	{
 		
 		clsVehiculo objVehiculo;
-		objVehiculo = new clsVehiculo(matricula, minusvalido, plazaVehiculo, letra);
+		objVehiculo = new clsVehiculo(matricula, minusvalido, plazaVehiculo, letrazona);
 		
 		comprobarMatricula(objVehiculo);
 		
@@ -48,8 +66,6 @@ public class clsGestorLN
 		} else {
 			System.out.println("Ya existe ese vehículo");
 		}
-		
-	
 	}
 	
 	/**
@@ -93,7 +109,7 @@ public class clsGestorLN
 		
 	}
 	
-public static void comprobarMatricula(clsVehiculo nuevoVehiculo) throws clsMatriculaVehiculoRepetida {
+	public static void comprobarMatricula(clsVehiculo nuevoVehiculo) throws clsMatriculaVehiculoRepetida {
 		
 		
 		for (clsVehiculo objVehiculo : listaVehiculos) {

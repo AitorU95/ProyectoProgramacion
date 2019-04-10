@@ -8,7 +8,7 @@ import Comun.itfProperty;
  * @author
  *
  */
-public abstract class clsParking implements itfProperty
+public class clsParking implements itfProperty
 {
 	
 	/**
@@ -81,6 +81,22 @@ public abstract class clsParking implements itfProperty
 		return "clsParking [NombreParking=" + NombreParking + ", PlazasCochesTotales=" + PlazasCochesTotales
 				+ ", PlazasMotosTotales=" + PlazasMotosTotales + ", PlazasMinusvalidosTotales="
 				+ PlazasMinusvalidosTotales + ", ZonasTotales=" + ZonasTotales + "]";
+	}
+	
+	public Object getProperty(String propiedad)
+	{
+		
+		switch(propiedad) {
+			case "NombreParking": return this.getNombreParking();
+			case "PlazasCochesTotales": return this.getPlazasCochesTotales();
+			case "PlazasMotosTotales": return this.getPlazasMotosTotales();
+			case "PlazasMinusvalidos" : return this.getPlazasMinusvalidosTotales();
+			case "ZonasTotales": return this.getZonasTotales();
+			default: return ""; //lanzar runtime exception
+		}
+		
+		
+		
 	}
 	
 
