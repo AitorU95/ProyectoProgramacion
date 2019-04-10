@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.oracle.xmlns.internal.webservices.jaxws_databinding.ExistingAnnotationsType;
 
 import Comun.itfProperty;
+import Excepciones.clsMatriculaVehiculoRepetida;
 import LN.clsGestorLN;
 
 /**
@@ -88,9 +89,15 @@ public class clsMenu
 		System.out.println("Introduce la plaza en la que esta el vehículo");
 		int plaza = UtilidadesLP.leerEntero();
 		
-		objg.AltaVehiculo(tipovehiculo, minusvalido, matricula);
 		
-		MenuPrincipal();
+		try {
+			objg.AltaVehiculo(matricula, minusvalido, plaza, letra);
+			MenuPrincipal();
+		} catch (clsMatriculaVehiculoRepetida e) {
+			System.out.println(e.getMessage());
+			MenuPrincipal();
+		}
+		
 	}
 	
 	/**

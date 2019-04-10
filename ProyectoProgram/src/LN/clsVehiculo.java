@@ -18,7 +18,8 @@ public class clsVehiculo implements itfProperty
 	
 	private String Matricula;
 	private boolean Minusvalido;
-	private String PlazaVehiculo;
+	private int PlazaVehiculo;
+	private String ZonaVehiculo;
 	
 	
 	
@@ -26,11 +27,12 @@ public class clsVehiculo implements itfProperty
 	 * Constructor, getters y setter de la clase
 	 */
 	
-	public clsVehiculo(String matricula, boolean minusvalido, String plazaVehiculo) {
+	public clsVehiculo(String matricula, boolean minusvalido, int plazaVehiculo,String zonaVehiculo) {
 		
 		this.Matricula = matricula;
 		this.Minusvalido = minusvalido;
 		this.PlazaVehiculo = plazaVehiculo;
+		this.ZonaVehiculo = zonaVehiculo;
 	}
 	
 	public String getMatricula() {
@@ -49,16 +51,21 @@ public class clsVehiculo implements itfProperty
 		Minusvalido = minusvalido;
 	}
 
-	public String getPlazaVehiculo() {
+	public int getPlazaVehiculo() {
 		return PlazaVehiculo;
 	}
 
-	public void setPlazaVehiculo(String plazaVehiculo) {
+	public void setPlazaVehiculo(int plazaVehiculo) {
 		PlazaVehiculo = plazaVehiculo;
 	}
 	
-	
-	
+	public String getZonaVehiculo() {
+		return ZonaVehiculo;
+	}
+
+	public void setZonaVehiculo(String zonaVehiculo) {
+		ZonaVehiculo = zonaVehiculo;
+	}
 
 	@Override
 	public String toString() {
@@ -73,7 +80,8 @@ public class clsVehiculo implements itfProperty
 		switch(propiedad) {
 			case "Matricula": return this.getMatricula();
 			case "Minusvalido": return this.isMinusvalido();
-			case "MatriculaVehiculo": return this.getPlazaVehiculo();
+			case "PlazaVehiculo": return this.getPlazaVehiculo();
+			case "ZonaVehiculo" : return this.getZonaVehiculo(); 
 		}
 		
 		return getMatricula();
