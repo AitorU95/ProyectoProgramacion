@@ -6,31 +6,81 @@ package LN;
  * @author Industria 4.0
  *
  */
-public abstract class clsZona extends clsParking {
+public class clsZona
+{
 	
 	/**
 	 * Atributos de la clase
 	 */
-	private int PlazasZona;
+	
+	private String LetraZona;
+	private int PlazasCocheZona;
+	private int PlazasMotoZona;
+	private int PlazasMinusvalidoZona;
+	
 		
 	/**
-	 * Getters y setters de los atributos
-	 * @return
+	 * Constructor, Getters y setters de los atributos
 	 */
-
-	public int getPlazasZona() {
-		return PlazasZona;
+	
+	public clsZona(String letraZona, int plazasCocheZona, int plazasMotoZona, int plazasMinusvalidoZona) {
+		
+		this.LetraZona = letraZona;
+		this.PlazasCocheZona = plazasCocheZona;
+		this.PlazasMotoZona = plazasMotoZona;
+		this.PlazasMinusvalidoZona = plazasMinusvalidoZona;
 	}
 
-	public void setPlazasZona(int plazasZona) {
-		PlazasZona = plazasZona;
+
+	public String getLetraZona() {
+		return LetraZona;
+	}
+
+
+	public void setLetraZona(String letraZona) {
+		LetraZona = letraZona;
+	}
+
+
+	public int getPlazasCocheZona() {
+		return PlazasCocheZona;
+	}
+
+
+	public void setPlazasCocheZona(int plazasCocheZona) {
+		PlazasCocheZona = plazasCocheZona;
+	}
+
+
+	public int getPlazasMotoZona() {
+		return PlazasMotoZona;
+	}
+
+
+	public void setPlazasMotoZona(int plazasMotoZona) {
+		PlazasMotoZona = plazasMotoZona;
+	}
+
+
+	public int getPlazasMinusvalidoZona() {
+		return PlazasMinusvalidoZona;
+	}
+
+
+	public void setPlazasMinusvalidoZona(int plazasMinusvalidoZona) {
+		PlazasMinusvalidoZona = plazasMinusvalidoZona;
+	}
+
+
+	@Override
+	public String toString() {
+		return "clsZona [LetraZona=" + LetraZona + ", PlazasCocheZona=" + PlazasCocheZona + ", PlazasMotoZona="
+				+ PlazasMotoZona + ", PlazasMinusvalidoZona=" + PlazasMinusvalidoZona + "]";
 	}
 	
 	
+	
 
-	
-	
-	
-	
+
 
 }

@@ -8,63 +8,85 @@ import Comun.itfProperty;
  * @author
  *
  */
-public abstract class clsParking implements itfProperty {
+public abstract class clsParking implements itfProperty
+{
 	
 	/**
 	 * Atributos de la clase
 	 */
 	
-	private int PlazasCoches;
-	private int PlazasMotos;
-	private int PlazasMinusvalidos;
-	private int Plazas;
-	private String Zona;
+	private String NombreParking;
+	private int PlazasCochesTotales;
+	private int PlazasMotosTotales;
+	private int PlazasMinusvalidosTotales;
+	private int ZonasTotales;
+	
 	
 	/**
-	 * Getters y setters de los atributos
+	 * Contrusctores, getters y setters de los atributos
 	 */
-
-	public int getPlazasCoches() {
-		return PlazasCoches;
+	
+	
+	public clsParking(String nombreparking, int plazasCochesTotales, int plazasMotosTotales, int plazasMinusvalidosTotales,int zonasTotales)
+	{
+		
+		this.NombreParking = nombreparking;
+		this.PlazasCochesTotales= plazasCochesTotales;
+		this.PlazasMotosTotales = plazasMotosTotales;
+		this.PlazasMinusvalidosTotales = plazasMinusvalidosTotales;
+		this.ZonasTotales = zonasTotales;
 	}
 	
-	public void setPlazasCoches(int plazasCoches) {
-		PlazasCoches = plazasCoches;
-	}
 	
-	public int getPlazasMotos() {
-		return PlazasMotos;
-	}
 	
-	public void setPlazasMotos(int plazasMotos) {
-		PlazasMotos = plazasMotos;
-	}
 	
-	public int getPlazasMinusvalidos() {
-		return PlazasMinusvalidos;
+	public String getNombreParking() {
+		return NombreParking;
 	}
-	
-	public void setPlazasMinusvalidos(int plazasMinusvalidos) {
-		PlazasMinusvalidos = plazasMinusvalidos;
+	public void setNombreParking(String nombreParking) {
+		NombreParking = nombreParking;
 	}
 
-	public int getPlazas() {
-		return Plazas;
-	}
-
-	public void setPlazas(int plazas) {
-		Plazas = plazas;
-	}
-
-	public String getZona() {
-		return Zona;
-	}
-
-	public void setZona(String zona) {
-		Zona = zona;
+	public int getPlazasCochesTotales() {
+		return PlazasCochesTotales;
 	}
 	
+	public void setPlazasCochesTotales(int plazasCochesTotales) {
+		PlazasCochesTotales = plazasCochesTotales;
+	}
+	public int getPlazasMotosTotales() {
+		return PlazasMotosTotales;
+	}
+	public void setPlazasMotosTotales(int plazasMotosTotales) {
+		PlazasMotosTotales = plazasMotosTotales;
+	}
+	public int getPlazasMinusvalidosTotales() {
+		return PlazasMinusvalidosTotales;
+	}
+	public void setPlazasMinusvalidosTotales(int plazasMinusvalidosTotales) {
+		PlazasMinusvalidosTotales = plazasMinusvalidosTotales;
+	}
+	public int getZonasTotales() {
+		return ZonasTotales;
+	}
+	public void setZonasTotales(int zonasTotales) {
+		ZonasTotales = zonasTotales;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "clsParking [NombreParking=" + NombreParking + ", PlazasCochesTotales=" + PlazasCochesTotales
+				+ ", PlazasMotosTotales=" + PlazasMotosTotales + ", PlazasMinusvalidosTotales="
+				+ PlazasMinusvalidosTotales + ", ZonasTotales=" + ZonasTotales + "]";
+	}
 	
+
+	
+	
+
 
 
 }

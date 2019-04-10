@@ -13,8 +13,10 @@ public class clsGestorLN
 {
 	
 	/**
-	 * Creamos un array que guardara los veiculos
+	 * Creamos un array que guardara los vehiculos
 	 */
+	
+	
 	ArrayList<clsVehiculo> listaVehiculos;
 	
 	public clsGestorLN()
@@ -30,11 +32,11 @@ public class clsGestorLN
 	 * @param matricula
 	 * @param letrazona
 	 */
-	public void AltaVehiculo (String tipovehiculo, boolean minusvalido, String matricula, String letrazona)
+	public void AltaVehiculo (String matricula, boolean minusvalido, String plazaVehiculo)
 	{
 		
 		clsVehiculo objVehiculo;
-		objVehiculo = new clsVehiculo(tipovehiculo, minusvalido, matricula, letrazona);
+		objVehiculo = new clsVehiculo(matricula, minusvalido, plazaVehiculo);
 		listaVehiculos.add(objVehiculo);
 		
 	
@@ -45,13 +47,15 @@ public class clsGestorLN
 	 * @return
 	 */
 	
-	public ArrayList<itfProperty> MostrarVehiculos(){
+	public ArrayList<itfProperty> MostrarVehiculos()
+	{
 		
 		ArrayList<itfProperty> retorno;
 		
 		retorno = new ArrayList <itfProperty>();
 		
-		for(clsPlaza a:listaVehiculos) {
+		for(clsVehiculo a:listaVehiculos)
+		{
 			retorno.add(a);
 		}
 		

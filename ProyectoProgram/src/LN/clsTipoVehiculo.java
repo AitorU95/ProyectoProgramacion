@@ -7,43 +7,47 @@ package LN;
  *
  */
 
-public class clsTipoVehiculo extends clsVehiculo {
+public class clsTipoVehiculo extends clsVehiculo
+{
 	
-	
-
 	/**
 	 * Atributos de la clase
 	 */
 	
-	private boolean Coche;
-	private boolean Moto;
+	private String TipoVehiculo;
 	
-	public clsTipoVehiculo(String tipovehiculo, boolean minusvalido, String matricula, String letrazona, boolean coche, boolean moto) {
-		super(tipovehiculo, minusvalido, matricula, letrazona);
-		this.Coche = coche;
-		this.Moto = moto;
-		
-	}
+
 	
 	/**
 	 * Getters y setters de la clase
 	 */
 	
-	public boolean getCoche() {
-		return Coche;
+	public clsTipoVehiculo(String tipovehiculo, String matricula, boolean minusvalido, String plazaVehiculo)
+	{
+	
+		super(matricula, minusvalido, plazaVehiculo);
+		this.TipoVehiculo = tipovehiculo;
+		
+	}
+
+
+
+	public String getTipoVehiculo() {
+		return TipoVehiculo;
+	}
+
+	public void setTipoVehiculo(String tipoVehiculo) {
+		TipoVehiculo = tipoVehiculo;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "clsTipoVehiculo [TipoVehiculo=" + TipoVehiculo + "]";
 	}
 	
-	public void setCoche(boolean coche) {
-		Coche = coche;
-	}
 	
-	public boolean getMoto() {
-		return Moto;
-	}
-	
-	public void setMoto(boolean moto) {
-		Moto = moto;
-	}
 	
 	
 

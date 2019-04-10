@@ -7,60 +7,63 @@ package LN;
  *
  */
 
-public class clsPlaza extends clsZona {
+public class clsPlaza
+{
 	
 	/**
 	 * Atributos de la clase
 	 */
 	
-	private String MatriculaVehiculo;
-	private String letraZona;
-	
-	public clsPlaza (String matricula, String letradezona) {
-		this.MatriculaVehiculo = matricula;
-		this.letraZona = letradezona;
-		
-	}
+	private String NumeroPlaza	;
+	private boolean PlazaOcupada;
+	private String ZonaDeLaPlaza;
 	
 	/**
 	 * Getters y setters de la clase
 	 */
 	
-
-	
-	public String getMatriculaVehiculo() {
-		return MatriculaVehiculo;
-	}
-	
-	public String getLetraZona() {
-		return letraZona;
+	public clsPlaza(String numeroPlaza, boolean plazaOcupada, String zonadelaPlaza) {
+		
+		this.NumeroPlaza = numeroPlaza;
+		this.PlazaOcupada = plazaOcupada;
+		this.ZonaDeLaPlaza = zonadelaPlaza;
 	}
 
-	public void setLetraZona(String letraZona) {
-		this.letraZona = letraZona;
+	public String getNumeroPlaza() {
+		return NumeroPlaza;
 	}
 
-	public void setMatriculaVehiculo(String matriculaVehiculo) {
-		MatriculaVehiculo = matriculaVehiculo;
+	public void setNumeroPlaza(String numeroPlaza) {
+		NumeroPlaza = numeroPlaza;
 	}
-	
-	public Object getProperty(String propiedad) {
-		
-		switch(propiedad) {
-			case "MatriculaVehiculo": return this.getMatriculaVehiculo();
-			case "letraZona": return this.getLetraZona();
-			
-			
-		}
-		
-		return getMatriculaVehiculo();
-		
-		
+
+	public boolean isPlazaOcupada() {
+		return PlazaOcupada;
+	}
+
+	public void setPlazaOcupada(boolean plazaOcupada) {
+		PlazaOcupada = plazaOcupada;
+	}
+
+	public String getZonaDeLaPlaza() {
+		return ZonaDeLaPlaza;
+	}
+
+	public void setZonaDeLaPlaza(String zonaDeLaPlaza) {
+		ZonaDeLaPlaza = zonaDeLaPlaza;
+	}
+
+	@Override
+	public String toString() {
+		return "clsPlaza [NumeroPlaza=" + NumeroPlaza + ", PlazaOcupada=" + PlazaOcupada + ", ZonaDeLaPlaza="
+				+ ZonaDeLaPlaza + "]";
 	}
 	
 	
 
+
 	
 	
+
 
 }

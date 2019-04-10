@@ -29,15 +29,17 @@ public class clsMenu
 		
 		System.out.println("Bienvenid@ al programa");
 		
-		do {
+		do
+		{
 			
 			System.out.println("Elige una opcion");
-			System.out.println("1- Introduce los datos de un vehiculo");
-			System.out.println("2- Muestra los datos introducidos");
+			System.out.println("1- Crea tu Parking");
+			System.out.println("2- Consulta los datos de tus Parkings");
 			System.out.println("3- Salir del programa");
 			op = UtilidadesLP.leerEntero();
 			
-			switch(op) {
+			switch(op)
+			{
 			
 			 case 1: NuevoVehiculo(objGestor);
 			 	break;
@@ -91,14 +93,16 @@ public class clsMenu
 	 * @param objG
 	 */
 	
-	public static void MostrarDatos(clsGestorLN objG) {
+	public static void MostrarDatos(clsGestorLN objG)
+	{
+	
 		
 		ArrayList<itfProperty> lista;
 		
 		lista = objG.MostrarVehiculos();
 		
 		for(itfProperty p:lista) {
-			System.out.println(p.getProperty("MatriculaVehiculo"));
+			System.out.println(p.getProperty("TipoVehiculo") + " con matricula " + p.getProperty("MatriculaVehiculo"));
 		
 		}
 		

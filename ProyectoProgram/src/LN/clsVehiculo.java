@@ -1,5 +1,6 @@
 package LN;
 
+import Comun.itfProperty;
 
 /**
  * Clase que contiene la informacion sobre el vehiculo.
@@ -8,56 +9,83 @@ package LN;
  *
  */
 
-public class clsVehiculo extends clsPlaza{
+public class clsVehiculo implements itfProperty
+{
 	
 	/**
 	 * Atributos de la clase
 	 */
 	
-	private String TipoVehiculo;
+	private String Matricula;
 	private boolean Minusvalido;
+	private String PlazaVehiculo;
 	
-	public clsVehiculo(String tipovehiculo, boolean minusvalido, String matricula, String letrazona) {
-		super(matricula, letrazona);
-		
-		this.TipoVehiculo = tipovehiculo;
-		this.Minusvalido = minusvalido;
-		
-	}
+	
 	
 	/**
-	 * Getters y setter de la clase
+	 * Constructor, getters y setter de la clase
 	 */
 	
-	public String getTipoVehiculo() {
-		return TipoVehiculo;
+	public clsVehiculo(String matricula, boolean minusvalido, String plazaVehiculo) {
+		
+		this.Matricula = matricula;
+		this.Minusvalido = minusvalido;
+		this.PlazaVehiculo = plazaVehiculo;
 	}
 	
-	public void setTipoVehiculo(String tipoVehiculo) {
-		TipoVehiculo = tipoVehiculo;
+	public String getMatricula() {
+		return Matricula;
 	}
-	
-	public boolean getMinusvalido() {
+
+	public void setMatricula(String matricula) {
+		Matricula = matricula;
+	}
+
+	public boolean isMinusvalido() {
 		return Minusvalido;
 	}
-	
+
 	public void setMinusvalido(boolean minusvalido) {
 		Minusvalido = minusvalido;
 	}
+
+	public String getPlazaVehiculo() {
+		return PlazaVehiculo;
+	}
+
+	public void setPlazaVehiculo(String plazaVehiculo) {
+		PlazaVehiculo = plazaVehiculo;
+	}
 	
-	public Object getProperty(String propiedad) {
+
+	@Override
+	public String toString() {
+		return "clsVehiculo [Matricula=" + Matricula + ", Minusvalido=" + Minusvalido + ", PlazaVehiculo="
+				+ PlazaVehiculo + "]";
+	}
+	
+
+	public Object getProperty(String propiedad)
+	{
 		
 		switch(propiedad) {
-			case "TipoVehiculo": return this.getTipoVehiculo();
-			case "Minusvalido": return this.getMinusvalido();
-			case "MatriculaVehiculo": return this.getMatriculaVehiculo();
-			
-			
+			case "Matricula": return this.getMatricula();
+			case "Minusvalido": return this.isMinusvalido();
+			case "MatriculaVehiculo": return this.getPlazaVehiculo();
 		}
 		
-		return getMatriculaVehiculo();
+		return getMatricula();
+		
+		
+		
 		
 		
 	}
+
+
+
+
+	
+	
 
 }

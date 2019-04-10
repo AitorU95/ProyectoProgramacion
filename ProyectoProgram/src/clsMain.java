@@ -5,9 +5,11 @@ import LP.clsMenu;
  *
  */
 
-public class clsMain {
+public class clsMain
+{
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		
 		/**
 		 * Llamada a la clase del menu
