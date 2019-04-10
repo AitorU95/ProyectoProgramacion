@@ -2,6 +2,8 @@ package LP;
 
 import java.util.ArrayList;
 
+import com.oracle.xmlns.internal.webservices.jaxws_databinding.ExistingAnnotationsType;
+
 import Comun.itfProperty;
 import LN.clsGestorLN;
 
@@ -83,8 +85,12 @@ public class clsMenu
 		System.out.println("Introduce la letra de la zona en la que esta el vehiculo");
 		String letra = UtilidadesLP.leerCadena();
 		
-		objg.AltaVehiculo(tipovehiculo, minusvalido, matricula, letra);
+		System.out.println("Introduce la plaza en la que esta el vehículo");
+		int plaza = UtilidadesLP.leerEntero();
 		
+		objg.AltaVehiculo(tipovehiculo, minusvalido, matricula);
+		
+		MenuPrincipal();
 	}
 	
 	/**
@@ -105,6 +111,8 @@ public class clsMenu
 			System.out.println(p.getProperty("TipoVehiculo") + " con matricula " + p.getProperty("MatriculaVehiculo"));
 		
 		}
+		
+		MenuPrincipal();
 		
 	}
 	

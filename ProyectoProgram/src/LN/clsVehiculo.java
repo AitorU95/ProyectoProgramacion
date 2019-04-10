@@ -57,6 +57,8 @@ public class clsVehiculo implements itfProperty
 		PlazaVehiculo = plazaVehiculo;
 	}
 	
+	
+	
 
 	@Override
 	public String toString() {
@@ -76,16 +78,31 @@ public class clsVehiculo implements itfProperty
 		
 		return getMatricula();
 		
-		
-		
-		
-		
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Matricula == null) ? 0 : Matricula.hashCode());
+		return result;
+	}
 
-
-
-	
-	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		clsVehiculo other = (clsVehiculo) obj;
+		if (Matricula == null) {
+			if (other.Matricula != null)
+				return false;
+		} else if (!Matricula.equals(other.Matricula))
+			return false;
+		return true;
+	}
 
 }

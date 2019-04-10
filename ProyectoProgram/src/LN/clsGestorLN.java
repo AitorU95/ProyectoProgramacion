@@ -1,6 +1,7 @@
 package LN;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import Comun.itfProperty;
 
@@ -17,7 +18,7 @@ public class clsGestorLN
 	 */
 	
 	
-	ArrayList<clsVehiculo> listaVehiculos;
+	public static ArrayList<clsVehiculo> listaVehiculos;
 	
 	public clsGestorLN()
 	{
@@ -32,12 +33,18 @@ public class clsGestorLN
 	 * @param matricula
 	 * @param letrazona
 	 */
+	
 	public void AltaVehiculo (String matricula, boolean minusvalido, String plazaVehiculo)
 	{
 		
 		clsVehiculo objVehiculo;
 		objVehiculo = new clsVehiculo(matricula, minusvalido, plazaVehiculo);
-		listaVehiculos.add(objVehiculo);
+		
+		if(!Existe(objVehiculo)) {
+			listaVehiculos.add(objVehiculo);
+		} else {
+			System.out.println("Ya existe ese vehículo");
+		}
 		
 	
 	}
@@ -62,6 +69,25 @@ public class clsGestorLN
 		return retorno;
 	}
 	
-
+	
+	/**
+	 * metodo para comprobar si ya existe un vehículo
+	 * @param _vehiculo
+	 * @return
+	 */
+	public static boolean Existe(clsVehiculo _vehiculo)
+	{
+		
+		boolean retorno = false;
+		
+		for(clsVehiculo b:listaVehiculos)
+		{
+			if(b.equals(_vehiculo)) return true;
+			
+		}
+		
+		return retorno;
+		
+	}
 	
 }
