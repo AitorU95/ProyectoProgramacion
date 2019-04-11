@@ -1,12 +1,14 @@
 package LN;
 
+import Comun.itfProperty;
+
 /**
  * Clase que contiene información sobre la zona en la que se encuentran los vehículos dentro del parking.
  * Cada zona se identifica por una letra y todas tienen el mismo número de plazas.
  * @author Industria 4.0
  *
  */
-public class clsZona
+public class clsZona implements itfProperty 
 {
 	
 	/**
@@ -78,6 +80,21 @@ public class clsZona
 				+ PlazasMotoZona + ", PlazasMinusvalidoZona=" + PlazasMinusvalidoZona + "]";
 	}
 	
+	
+	public Object getProperty(String propiedad)
+	{
+		
+		switch(propiedad) {
+			case "LetraZona": return this.getLetraZona();
+			case "PlazasCocheZona": return this.getPlazasCocheZona();
+			case "PlazasMotoZona": return this.getPlazasMotoZona();
+			case "PlazasMinusvalidoZona" : return this.getPlazasMinusvalidoZona();
+			default: return ""; //lanzar runtime exception
+		}
+		
+		
+		
+	}
 	
 	
 

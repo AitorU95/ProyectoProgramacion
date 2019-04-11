@@ -1,5 +1,7 @@
 package LN;
 
+import Comun.itfProperty;
+
 /**
  * Clase creada para identificar el tipo de vehiculo que hay en la plaza.
  * Devuelve un boolean diciendo si es coche o si es moto
@@ -7,7 +9,7 @@ package LN;
  *
  */
 
-public class clsTipoVehiculo extends clsVehiculo
+public class clsTipoVehiculo extends clsVehiculo implements itfProperty
 {
 	
 	/**
@@ -22,10 +24,10 @@ public class clsTipoVehiculo extends clsVehiculo
 	 * Getters y setters de la clase
 	 */
 	
-	public clsTipoVehiculo(String tipovehiculo, String matricula, boolean minusvalido, String plazaVehiculo)
+	public clsTipoVehiculo(String tipovehiculo, String matricula, boolean minusvalido, int plazaVehiculo, String ZonaVehiculo)
 	{
 	
-		super(matricula, minusvalido, plazaVehiculo);
+		super(matricula, minusvalido, plazaVehiculo, ZonaVehiculo);
 		this.TipoVehiculo = tipovehiculo;
 		
 	}
@@ -47,7 +49,17 @@ public class clsTipoVehiculo extends clsVehiculo
 		return "clsTipoVehiculo [TipoVehiculo=" + TipoVehiculo + "]";
 	}
 	
-	
+	public Object getProperty(String propiedad)
+	{
+		
+		switch(propiedad) {
+			case "TipoVehiculo": return this.getTipoVehiculo();
+			default: return ""; //lanzar runtime exception
+		}
+		
+		
+		
+	}
 	
 	
 

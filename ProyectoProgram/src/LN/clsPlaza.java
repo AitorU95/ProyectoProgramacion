@@ -1,5 +1,7 @@
 package LN;
 
+import Comun.itfProperty;
+
 /**
  * Clase que contiene la informacion sobre la plaza.
  * La plaza puede estar ocupada o no y si lo estuviese se guardaria la matricula del vehiculo que la ocupa.
@@ -7,14 +9,14 @@ package LN;
  *
  */
 
-public class clsPlaza
+public class clsPlaza implements itfProperty
 {
 	
 	/**
 	 * Atributos de la clase
 	 */
 	
-	private String NumeroPlaza	;
+	private int NumeroPlaza	;
 	private boolean PlazaOcupada;
 	private String ZonaDeLaPlaza;
 	
@@ -22,18 +24,18 @@ public class clsPlaza
 	 * Getters y setters de la clase
 	 */
 	
-	public clsPlaza(String numeroPlaza, boolean plazaOcupada, String zonadelaPlaza) {
+	public clsPlaza(int numeroPlaza, boolean plazaOcupada, String zonadelaPlaza) {
 		
 		this.NumeroPlaza = numeroPlaza;
 		this.PlazaOcupada = plazaOcupada;
 		this.ZonaDeLaPlaza = zonadelaPlaza;
 	}
 
-	public String getNumeroPlaza() {
+	public int getNumeroPlaza() {
 		return NumeroPlaza;
 	}
 
-	public void setNumeroPlaza(String numeroPlaza) {
+	public void setNumeroPlaza(int numeroPlaza) {
 		NumeroPlaza = numeroPlaza;
 	}
 
@@ -60,7 +62,18 @@ public class clsPlaza
 	}
 	
 	
+	public Object getProperty(String propiedad)
+	{
 		
-	
+		switch(propiedad) {
+			case "NumeroPlaza": return this.getNumeroPlaza();
+			case "PlazaOcupada": return this.isPlazaOcupada();
+			case "ZonaDeLaPlaza": return this.getZonaDeLaPlaza();
+			default: return ""; //lanzar runtime exception
+		}
+		
+		
+		
+	}
 		
 }

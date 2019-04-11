@@ -25,6 +25,10 @@ public class clsGestorLN
 	public clsGestorLN()
 	{
 		listaVehiculos = new ArrayList<clsVehiculo>();
+		listaParking = new ArrayList<clsParking>();
+		listaZonas = new ArrayList<clsZona>();
+		listaPlaza = new ArrayList<clsPlaza>();
+		
 		
 	}
 	
@@ -51,7 +55,39 @@ public class clsGestorLN
 		return retorno;
 	}
 	
+	public void InsertarZona (String letraZona, int plazasCocheZona, int plazasMotoZona, int plazasMinusvalidoZona) {
+		
+		clsZona objZona;
+		objZona = new clsZona(letraZona, plazasCocheZona, plazasMotoZona, plazasMinusvalidoZona);
+		listaZonas.add(objZona);
+	}
 	
+	public ArrayList<itfProperty> VisualizarZonas(){
+		
+		ArrayList<itfProperty>retorno;
+		retorno = new ArrayList <itfProperty>();
+		for(clsZona a:listaZonas) {
+			retorno.add(a);
+		}
+		return retorno;
+	}
+	
+	public void InsertarPlaza (int numeroPlaza, boolean plazaOcupada, String zonadelaPlaza) {
+		
+		clsPlaza objPlaza;
+		objPlaza = new clsPlaza(numeroPlaza, plazaOcupada, zonadelaPlaza);
+		listaPlaza.add(objPlaza);
+	}
+	
+	public ArrayList<itfProperty> VisualizarPlazas(){
+		
+		ArrayList<itfProperty>retorno;
+		retorno = new ArrayList <itfProperty>();
+		for(clsPlaza a:listaPlaza) {
+			retorno.add(a);
+		}
+		return retorno;
+	}
 	
 	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida
 	{
@@ -64,7 +100,7 @@ public class clsGestorLN
 		if(!Existe(objVehiculo)) {
 			listaVehiculos.add(objVehiculo);
 		} else {
-			System.out.println("Ya existe ese vehículo");
+			System.out.println("Ya existe un vehiculo con esa matricula");
 		}
 	}
 	
