@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import Comun.itfProperty;
 import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
+import Excepciones.clsMatriculaIncorrecta;
 import LN.clsGestorLN;
 
 /**
@@ -19,7 +20,7 @@ public class clsMenu
 {
 	
 	
-	public static void MenuPrincipal () throws clsPlazaOcupada
+	public static void MenuPrincipal () throws clsPlazaOcupada, clsMatriculaIncorrecta
 	{
 		
 		
@@ -185,7 +186,7 @@ public class clsMenu
 		}	
 	}
 	
-	private static void NuevoVehiculo(clsGestorLN objg, String zona, int letra) throws clsPlazaOcupada
+	private static void NuevoVehiculo(clsGestorLN objg, String zona, int letra) throws clsPlazaOcupada, clsMatriculaIncorrecta
 	{
 		
 		System.out.println("Introduce la Matricula");

@@ -3,8 +3,10 @@ package LN;
 import java.util.ArrayList;
 
 import Comun.itfProperty;
+import Excepciones.clsMatriculaIncorrecta;
 import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
+import sun.security.util.Length;
 
 /**
  * Clase que sirve de enlace entre la LP y la LN
@@ -90,13 +92,14 @@ public class clsGestorLN
 		return retorno;
 	}
 	
-	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida, clsPlazaOcupada
+	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida, clsPlazaOcupada, clsMatriculaIncorrecta
 	{
 		
 		clsVehiculo objVehiculo;
 		objVehiculo = new clsVehiculo(matricula, minusvalido, plazaVehiculo, letrazona);
 		
 		comprobarMatricula(objVehiculo);
+		matriculaIncorrecta(objVehiculo);
 		comprobarPlaza(objVehiculo);
 		
 		if(!Existe(objVehiculo)) {
@@ -160,13 +163,24 @@ public class clsGestorLN
 		}
 	}
 	
-	public static void comprobarPlaza(clsVehiculo nuevoVehiculo) throws clsPlazaOcupada{
+	public static void comprobarPlaza(clsVehiculo nuevoVehiculo) throws clsPlazaOcupada {
 		
 		for (clsVehiculo objVehiculo: listaVehiculos) {
 			
 			if(objVehiculo.getPlazaVehiculo() == nuevoVehiculo.getPlazaVehiculo() && objVehiculo.getZonaVehiculo() == nuevoVehiculo.getZonaVehiculo()) {
 				
 				throw new clsPlazaOcupada();
+			}
+		}
+	}
+	
+	public static void matriculaIncorrecta(clsVehiculo nuevoVehiculo) throws clsMatriculaIncorrecta {
+		
+		for(clsVehiculo objvehiculo: listaVehiculos) {
+			
+			if(objvehiculo.getMatricula().length() != 7  ) {
+				
+				throw new clsMatriculaIncorrecta();
 			}
 		}
 	}
