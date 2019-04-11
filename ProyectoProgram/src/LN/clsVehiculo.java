@@ -73,6 +73,9 @@ public class clsVehiculo implements itfProperty
 				+ PlazaVehiculo + "]";
 	}
 	
+	/**
+	 * Implementacion de la interfaz itfProperty para sacar los datos de un objeto de la clase
+	 */
 
 	public Object getProperty(String propiedad)
 	{
@@ -90,7 +93,10 @@ public class clsVehiculo implements itfProperty
 		
 		
 	}
-
+	
+	/**
+	 * Codigo de los metodos hashcode y equals
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;

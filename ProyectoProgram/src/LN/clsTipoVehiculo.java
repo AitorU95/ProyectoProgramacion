@@ -21,7 +21,7 @@ public class clsTipoVehiculo extends clsVehiculo implements itfProperty
 
 	
 	/**
-	 * Getters y setters de la clase
+	 *Constructor, Getters y setters de la clase
 	 */
 	
 	public clsTipoVehiculo(String tipovehiculo, String matricula, boolean minusvalido, int plazaVehiculo, String ZonaVehiculo)
@@ -49,6 +49,10 @@ public class clsTipoVehiculo extends clsVehiculo implements itfProperty
 		return "clsTipoVehiculo [TipoVehiculo=" + TipoVehiculo + "]";
 	}
 	
+	/**
+	 * Implementacion de la interfaz itfProperty para sacar los datos de un objeto de la clase
+	 */
+	
 	public Object getProperty(String propiedad)
 	{
 		
@@ -60,6 +64,39 @@ public class clsTipoVehiculo extends clsVehiculo implements itfProperty
 		
 		
 	}
+
+	
+	/**
+	 * Codigo de los metodos hashcode y equals
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((TipoVehiculo == null) ? 0 : TipoVehiculo.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		clsTipoVehiculo other = (clsTipoVehiculo) obj;
+		if (TipoVehiculo == null) {
+			if (other.TipoVehiculo != null)
+				return false;
+		} else if (!TipoVehiculo.equals(other.TipoVehiculo))
+			return false;
+		return true;
+	}
+	
+	
 	
 	
 

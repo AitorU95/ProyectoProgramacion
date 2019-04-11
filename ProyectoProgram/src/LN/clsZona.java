@@ -81,6 +81,10 @@ public class clsZona implements itfProperty
 	}
 	
 	
+	/**
+	 * Implementacion de la interfaz itfProperty para sacar los datos de un objeto de la clase
+	 */
+	
 	public Object getProperty(String propiedad)
 	{
 		
@@ -95,6 +99,46 @@ public class clsZona implements itfProperty
 		
 		
 	}
+	
+	/**
+	 * Codigo de los metodos hashcode y equals
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((LetraZona == null) ? 0 : LetraZona.hashCode());
+		result = prime * result + PlazasCocheZona;
+		result = prime * result + PlazasMinusvalidoZona;
+		result = prime * result + PlazasMotoZona;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		clsZona other = (clsZona) obj;
+		if (LetraZona == null) {
+			if (other.LetraZona != null)
+				return false;
+		} else if (!LetraZona.equals(other.LetraZona))
+			return false;
+		if (PlazasCocheZona != other.PlazasCocheZona)
+			return false;
+		if (PlazasMinusvalidoZona != other.PlazasMinusvalidoZona)
+			return false;
+		if (PlazasMotoZona != other.PlazasMotoZona)
+			return false;
+		return true;
+	}
+	
+	
 	
 	
 

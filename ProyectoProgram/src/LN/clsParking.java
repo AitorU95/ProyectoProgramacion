@@ -83,6 +83,10 @@ public class clsParking implements itfProperty
 				+ PlazasMinusvalidosTotales + ", ZonasTotales=" + ZonasTotales + "]";
 	}
 	
+	/**
+	 * Implementacion de la interfaz itfProperty para sacar los datos de un objeto de la clase
+	 */
+	
 	public Object getProperty(String propiedad)
 	{
 		
@@ -98,6 +102,51 @@ public class clsParking implements itfProperty
 		
 		
 	}
+
+	/**
+	 * Codigo de los metodos hashcode y equals
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((NombreParking == null) ? 0 : NombreParking.hashCode());
+		result = prime * result + PlazasCochesTotales;
+		result = prime * result + PlazasMinusvalidosTotales;
+		result = prime * result + PlazasMotosTotales;
+		result = prime * result + ZonasTotales;
+		return result;
+	}
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		clsParking other = (clsParking) obj;
+		if (NombreParking == null) {
+			if (other.NombreParking != null)
+				return false;
+		} else if (!NombreParking.equals(other.NombreParking))
+			return false;
+		if (PlazasCochesTotales != other.PlazasCochesTotales)
+			return false;
+		if (PlazasMinusvalidosTotales != other.PlazasMinusvalidosTotales)
+			return false;
+		if (PlazasMotosTotales != other.PlazasMotosTotales)
+			return false;
+		if (ZonasTotales != other.ZonasTotales)
+			return false;
+		return true;
+	}
+	
+	
 	
 
 	

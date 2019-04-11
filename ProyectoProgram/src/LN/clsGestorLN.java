@@ -17,7 +17,7 @@ public class clsGestorLN
 {
 	
 	/**
-	 * Creamos un array que guardara los vehiculos
+	 * Creamos los arrays que guardaran los distintos objetos dependiendo de cada clase
 	 */
 	
 	public static ArrayList<clsParking> listaParking;
@@ -36,10 +36,8 @@ public class clsGestorLN
 	}
 	
 	/**
-	 * metodo para dar de alta vehiculos
+	 * metodo que usa el gestor para crear objetos de tipo parking y añairlos a su correspondiente array
 	 */
-
-	
 	public void InsertarDatosParking (String nombre, int plazascoches, int plazasmotos, int plazasminusvalidos, int zonastotales) {
 		
 		clsParking objParking;
@@ -47,7 +45,10 @@ public class clsGestorLN
 		listaParking.add(objParking);
 	}
 	
-	
+	/**
+	 * metodo que crea un array de los parkings existentes para poder mostrarlos
+	 * @return
+	 */
 	public ArrayList<itfProperty> MostrarParkings(){
 		
 		ArrayList<itfProperty> retorno;
@@ -58,6 +59,13 @@ public class clsGestorLN
 		return retorno;
 	}
 	
+	/**
+	 * metodo que usa el gestor para crear objetos de tipo zona y añairlos a su correspondiente array
+	 * @param letraZona
+	 * @param plazasCocheZona
+	 * @param plazasMotoZona
+	 * @param plazasMinusvalidoZona
+	 */
 	public void InsertarZona (String letraZona, int plazasCocheZona, int plazasMotoZona, int plazasMinusvalidoZona) {
 		
 		clsZona objZona;
@@ -65,6 +73,10 @@ public class clsGestorLN
 		listaZonas.add(objZona);
 	}
 	
+	/**
+	 *  metodo que crea un array de las zonas existentes para poder mostrarlas
+	 * @return
+	 */
 	public ArrayList<itfProperty> VisualizarZonas(){
 		
 		ArrayList<itfProperty>retorno;
@@ -75,6 +87,12 @@ public class clsGestorLN
 		return retorno;
 	}
 	
+	/**
+	 *  metodo que usa el gestor para crear objetos de tipo plaza y añairlos a su correspondiente array
+	 * @param numeroPlaza
+	 * @param plazaOcupada
+	 * @param zonadelaPlaza
+	 */
 	public void InsertarPlaza (int numeroPlaza, boolean plazaOcupada, String zonadelaPlaza) {
 		
 		clsPlaza objPlaza;
@@ -82,6 +100,10 @@ public class clsGestorLN
 		listaPlaza.add(objPlaza);
 	}
 	
+	/**
+	 *  metodo que crea un array de las plazas existentes para poder mostrarlas
+	 * @return
+	 */
 	public ArrayList<itfProperty> VisualizarPlazas(){
 		
 		ArrayList<itfProperty>retorno;
@@ -92,6 +114,16 @@ public class clsGestorLN
 		return retorno;
 	}
 	
+	/**
+	 *  metodo que usa el gestor para crear objetos de tipo vehiculo y añairlos a su correspondiente array
+	 * @param matricula
+	 * @param minusvalido
+	 * @param plazaVehiculo
+	 * @param letrazona
+	 * @throws clsMatriculaVehiculoRepetida
+	 * @throws clsPlazaOcupada
+	 * @throws clsMatriculaIncorrecta
+	 */
 	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida, clsPlazaOcupada, clsMatriculaIncorrecta
 	{
 		
@@ -110,7 +142,7 @@ public class clsGestorLN
 	}
 	
 	/**
-	 * metodo que nos muestra los vehiculos que hemos insertado
+	 * metodo que crea un array de los vehiculos existentes para poder mostrarlos
 	 * @return
 	 */
 	
@@ -150,6 +182,11 @@ public class clsGestorLN
 		
 	}
 	
+	/**
+	 * metodo que comprueba si hemos introducido un matricula repetida
+	 * @param nuevoVehiculo
+	 * @throws clsMatriculaVehiculoRepetida
+	 */
 	public static void comprobarMatricula(clsVehiculo nuevoVehiculo) throws clsMatriculaVehiculoRepetida {
 		
 		
@@ -163,6 +200,11 @@ public class clsGestorLN
 		}
 	}
 	
+	/**
+	 * metodo que comprueba si hemos introducido un plaza que esta ya ocupada
+	 * @param nuevoVehiculo
+	 * @throws clsPlazaOcupada
+	 */
 	public static void comprobarPlaza(clsVehiculo nuevoVehiculo) throws clsPlazaOcupada {
 		
 		for (clsVehiculo objVehiculo: listaVehiculos) {
@@ -174,6 +216,11 @@ public class clsGestorLN
 		}
 	}
 	
+	/**
+	 * metodo que comprueba si la matricula que hemos metido tiene 7 digitos
+	 * @param nuevoVehiculo
+	 * @throws clsMatriculaIncorrecta
+	 */
 	public static void matriculaIncorrecta(clsVehiculo nuevoVehiculo) throws clsMatriculaIncorrecta {
 		
 		for(clsVehiculo objvehiculo: listaVehiculos) {

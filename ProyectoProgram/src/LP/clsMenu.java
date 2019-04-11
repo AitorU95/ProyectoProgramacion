@@ -23,7 +23,9 @@ public class clsMenu
 	public static void MenuPrincipal () throws clsPlazaOcupada, clsMatriculaIncorrecta
 	{
 		
-		
+		/**
+		 * Creamos los distintos objetos con los que trabajara la aplicacion para crear los distintos objetos
+		 */
 		clsGestorLN objGestorParking = new clsGestorLN();
 		clsGestorLN objGestorZona = new clsGestorLN();
 		clsGestorLN objGestorPlaza = new clsGestorLN();
@@ -102,8 +104,8 @@ public class clsMenu
 	}
 	
 	/**
-	 * metodo que permite darle la informacion para crear un nuevo vehiculo
-	 * @param objg
+	 * metodo para generar los datos de un parking
+	 * 
 	 */
 	
 	private static void NuevoParking(clsGestorLN objg) {
@@ -127,6 +129,11 @@ public class clsMenu
 		
 	}
 	
+	/**
+	 * metodo para generar una nueva zona
+	 * @param objg
+	 */
+	
 	private static void NuevaZona (clsGestorLN objg) {
 		
 		System.out.println("Introduce la letra de la zona");
@@ -144,6 +151,11 @@ public class clsMenu
 		objg.InsertarZona(letra, plazascochezona, plazasmotozona, plazasminusvalidozona);
 	}
 	
+	/**
+	 * método para mostrar las zonas existentes
+	 * @param objG
+	 */
+	
 	public static void MostrarZonas(clsGestorLN objG){
 	
 		ArrayList<itfProperty> lista;
@@ -155,6 +167,12 @@ public class clsMenu
 		
 		}	
 	}
+	
+	/**
+	 * metodo para generar una plaza nueva
+	 * @param objg
+	 * @param letra
+	 */
 	
 	private static void NuevaPlaza(clsGestorLN objg, String letra) {
 		
@@ -174,6 +192,11 @@ public class clsMenu
 		objg.InsertarPlaza(numerplaza, plazaocupada, letra);
 	}
 	
+	/**
+	 * metodo para mostrar las plazas existentes
+	 * @param objG
+	 */
+	
 	public static void MostrarPlazas(clsGestorLN objG){
 		
 		ArrayList<itfProperty> lista;
@@ -185,6 +208,15 @@ public class clsMenu
 		
 		}	
 	}
+	
+	/**
+	 * metodo para añadir vehiculos nuevos
+	 * @param objg
+	 * @param zona
+	 * @param letra
+	 * @throws clsPlazaOcupada
+	 * @throws clsMatriculaIncorrecta
+	 */
 	
 	private static void NuevoVehiculo(clsGestorLN objg, String zona, int letra) throws clsPlazaOcupada, clsMatriculaIncorrecta
 	{
@@ -214,8 +246,7 @@ public class clsMenu
 	}
 	
 	/**
-	 * metodo que añade los vehiculos al array del gestor y los muestra por pantalla
-	 * 
+	 * metodo que muestra los objetos existentes
 	 * @param objG
 	 */
 	

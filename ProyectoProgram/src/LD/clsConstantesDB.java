@@ -14,7 +14,6 @@ public class clsConstantesDB {
 	
 	
 	
-	
 	public static final String SQL_INSERT_VEHICULO = "INSERT INTO `ProyectoParking`.`vehiculo`\r\n" + 
 													"(`Matricula`,\r\n" + "`Minusvalido`,\r\n" + "`Plaza_idPlaza`)\r\n" + 
 													"VALUES\r\n" +"(?,\r\n" + "?,\r\n" + "?);\r\n";

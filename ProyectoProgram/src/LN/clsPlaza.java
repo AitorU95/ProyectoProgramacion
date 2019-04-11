@@ -21,7 +21,7 @@ public class clsPlaza implements itfProperty
 	private String ZonaDeLaPlaza;
 	
 	/**
-	 * Getters y setters de la clase
+	 * Constructor, Getters y setters de la clase
 	 */
 	
 	public clsPlaza(int numeroPlaza, boolean plazaOcupada, String zonadelaPlaza) {
@@ -61,6 +61,9 @@ public class clsPlaza implements itfProperty
 				+ ZonaDeLaPlaza + "]";
 	}
 	
+	/**
+	 * Implementacion de la interfaz itfProperty para sacar los datos de un objeto de la clase
+	 */
 	
 	public Object getProperty(String propiedad)
 	{
@@ -75,5 +78,41 @@ public class clsPlaza implements itfProperty
 		
 		
 	}
+
+	/**
+	 * Codigo de los metodos hashcode y equals
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + NumeroPlaza;
+		result = prime * result + (PlazaOcupada ? 1231 : 1237);
+		result = prime * result + ((ZonaDeLaPlaza == null) ? 0 : ZonaDeLaPlaza.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		clsPlaza other = (clsPlaza) obj;
+		if (NumeroPlaza != other.NumeroPlaza)
+			return false;
+		if (PlazaOcupada != other.PlazaOcupada)
+			return false;
+		if (ZonaDeLaPlaza == null) {
+			if (other.ZonaDeLaPlaza != null)
+				return false;
+		} else if (!ZonaDeLaPlaza.equals(other.ZonaDeLaPlaza))
+			return false;
+		return true;
+	}
+	
+	
 		
 }
