@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Comun.itfProperty;
 import Excepciones.clsMatriculaVehiculoRepetida;
+import Excepciones.clsPlazaOcupada;
 
 /**
  * Clase que sirve de enlace entre la LP y la LN
@@ -53,13 +54,14 @@ public class clsGestorLN
 	
 	
 	
-	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida
+	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida, clsPlazaOcupada
 	{
 		
 		clsVehiculo objVehiculo;
 		objVehiculo = new clsVehiculo(matricula, minusvalido, plazaVehiculo, letrazona);
 		
 		comprobarMatricula(objVehiculo);
+		comprobarPlaza(objVehiculo);
 		
 		if(!Existe(objVehiculo)) {
 			listaVehiculos.add(objVehiculo);
@@ -118,6 +120,17 @@ public class clsGestorLN
 				
 				throw new clsMatriculaVehiculoRepetida();
 				
+			}
+		}
+	}
+	
+	public static void comprobarPlaza(clsVehiculo nuevoVehiculo) throws clsPlazaOcupada{
+		
+		for (clsVehiculo objVehiculo: listaVehiculos) {
+			
+			if(objVehiculo.getPlazaVehiculo() == nuevoVehiculo.getPlazaVehiculo() && objVehiculo.getZonaVehiculo() == nuevoVehiculo.getZonaVehiculo()) {
+				
+				throw new clsPlazaOcupada();
 			}
 		}
 	}
