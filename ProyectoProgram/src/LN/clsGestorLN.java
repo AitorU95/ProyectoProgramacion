@@ -1,11 +1,14 @@
 package LN;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import Comun.itfProperty;
 import Excepciones.clsMatriculaIncorrecta;
 import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
+import LD.clsComparadorPlaza;
+import LD.clsComparadorZona;
 import sun.security.util.Length;
 
 /**
@@ -31,7 +34,6 @@ public class clsGestorLN
 		listaParking = new ArrayList<clsParking>();
 		listaZonas = new ArrayList<clsZona>();
 		listaPlaza = new ArrayList<clsPlaza>();
-		
 		
 	}
 	
@@ -133,6 +135,7 @@ public class clsGestorLN
 		comprobarMatricula(objVehiculo);
 		matriculaIncorrecta(objVehiculo);
 		comprobarPlaza(objVehiculo);
+		ordenarVehiculos();
 		
 		if(!Existe(objVehiculo)) {
 			listaVehiculos.add(objVehiculo);
@@ -230,6 +233,19 @@ public class clsGestorLN
 				throw new clsMatriculaIncorrecta();
 			}
 		}
+	}
+	
+	/**
+	 * metodo que ordena los vehículos dentro de nuestra lista de vehículos
+	 * @throws clsComparadorZona
+	 * @throws clsComparadorPlaza
+	 */
+	
+	public static void ordenarVehiculos() {
+		
+		Collections.sort(listaVehiculos, new clsComparadorZona());
+		Collections.sort(listaVehiculos, new clsComparadorPlaza());
+		
 	}
 	
 }

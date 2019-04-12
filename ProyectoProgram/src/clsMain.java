@@ -1,3 +1,4 @@
+import Excepciones.clsMatriculaIncorrecta;
 import Excepciones.clsPlazaOcupada;
 import LP.clsMenu;
 
@@ -9,7 +10,7 @@ import LP.clsMenu;
 public class clsMain
 {
 	
-	public static void main(String[] args) throws clsPlazaOcupada
+	public static void main(String[] args) throws clsPlazaOcupada, clsMatriculaIncorrecta
 	{
 		
 		/**
@@ -17,6 +18,7 @@ public class clsMain
 		 */
 		
 		clsMenu.MenuPrincipal();
+		
 		
 		System.out.println("Fin del programa");
 		
