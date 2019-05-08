@@ -9,7 +9,6 @@ import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
 import LD.clsComparadorPlaza;
 import LD.clsComparadorZona;
-import sun.security.util.Length;
 
 /**
  * Clase que sirve de enlace entre la LP y la LN
@@ -117,7 +116,7 @@ public class clsGestorLN
 	}
 	
 	/**
-	 *  metodo que usa el gestor para crear objetos de tipo vehiculo y añairlos a su correspondiente array
+	 *  metodo que usa el gestor para crear objetos de tipo vehiculo y añadirlos a su correspondiente array
 	 * @param matricula
 	 * @param minusvalido
 	 * @param plazaVehiculo
@@ -140,7 +139,7 @@ public class clsGestorLN
 		if(!Existe(objVehiculo)) {
 			listaVehiculos.add(objVehiculo);
 		} else {
-			System.out.println("Ya existe un vehiculo con esa matricula");
+			System.out.println("Ya existe este vehículo");
 		}
 	}
 	
@@ -195,7 +194,7 @@ public class clsGestorLN
 		
 		for (clsVehiculo objVehiculo : listaVehiculos) {
 			
-			if(objVehiculo.getMatricula() == nuevoVehiculo.getMatricula()) {
+			if(objVehiculo.getMatricula().equalsIgnoreCase(nuevoVehiculo.getMatricula()) ) {
 				
 				throw new clsMatriculaVehiculoRepetida();
 				
@@ -212,7 +211,7 @@ public class clsGestorLN
 		
 		for (clsVehiculo objVehiculo: listaVehiculos) {
 			
-			if(objVehiculo.getPlazaVehiculo() == nuevoVehiculo.getPlazaVehiculo() && objVehiculo.getZonaVehiculo() == nuevoVehiculo.getZonaVehiculo()) {
+			if(objVehiculo.getPlazaVehiculo().equals(nuevoVehiculo.getPlazaVehiculo())  && objVehiculo.getZonaVehiculo().equalsIgnoreCase(nuevoVehiculo.getZonaVehiculo())) {
 				
 				throw new clsPlazaOcupada();
 			}

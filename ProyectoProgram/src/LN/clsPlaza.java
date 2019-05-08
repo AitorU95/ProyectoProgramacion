@@ -9,7 +9,7 @@ import Comun.itfProperty;
  *
  */
 
-public class clsPlaza implements itfProperty
+public class clsPlaza implements itfProperty 
 {
 	
 	/**

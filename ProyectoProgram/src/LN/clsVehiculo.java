@@ -18,7 +18,7 @@ public class clsVehiculo implements itfProperty
 	
 	private String Matricula;
 	private boolean Minusvalido;
-	private Integer PlazaVehiculo;
+	private int PlazaVehiculo;
 	private String ZonaVehiculo;
 	
 	
@@ -127,6 +127,7 @@ public class clsVehiculo implements itfProperty
 	{
 		
 		String zona = ZonaVehiculo;
+		int plaza = PlazaVehiculo;
 		clsVehiculo objCast;
 		
 		if(arg0==null)
@@ -138,8 +139,9 @@ public class clsVehiculo implements itfProperty
 		objCast = (clsVehiculo)arg0;
 		// TODO Auto-generated method stub
 		return zona.compareTo(objCast.getZonaVehiculo());
-	}
-	
+		
+		return plaza.compareTo(objCast.getPlazaVehiculo());
+		}
 	
 
 }
