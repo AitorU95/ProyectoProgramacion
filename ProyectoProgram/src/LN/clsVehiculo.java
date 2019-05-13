@@ -11,7 +11,7 @@ import Comun.itfProperty;
  *
  */
 
-public class clsVehiculo implements itfProperty
+public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 {
 	
 	/**
@@ -123,29 +123,18 @@ public class clsVehiculo implements itfProperty
 			return false;
 		return true;
 	}
+
+	public int compareTo(clsVehiculo otro) {
+		
+		return Integer.compare(this.PlazaVehiculo, otro.PlazaVehiculo);
+	}
+	
+		
+		
+
 	
 	
-	public int compareTo(Object arg0) 
-	{
-		
-		String zona = ZonaVehiculo;
-		clsVehiculo objCast;
-		
-		if(arg0==null)
-			throw new NullPointerException();
-		if(arg0.getClass()!=this.getClass())
-			throw new ClassCastException();
-		
-		
-		objCast = (clsVehiculo)arg0;
-		// TODO Auto-generated method stub
-		return zona.compareTo(objCast.getZonaVehiculo();
-		
-<<<<<<< Updated upstream
-		
-=======
->>>>>>> Stashed changes
-		}
+	
 	
 
 }
