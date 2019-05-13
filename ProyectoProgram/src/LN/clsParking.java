@@ -96,7 +96,8 @@ public class clsParking implements itfProperty
 			case "PlazasMotosTotales": return this.getPlazasMotosTotales();
 			case "PlazasMinusvalidos" : return this.getPlazasMinusvalidosTotales();
 			case "ZonasTotales": return this.getZonasTotales();
-			default: return ""; //lanzar runtime exception
+			default:
+				throw new RuntimeException("Propiedad incorrecta");
 		}
 		
 		

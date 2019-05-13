@@ -72,7 +72,8 @@ public class clsPlaza implements itfProperty
 			case "NumeroPlaza": return this.getNumeroPlaza();
 			case "PlazaOcupada": return this.isPlazaOcupada();
 			case "ZonaDeLaPlaza": return this.getZonaDeLaPlaza();
-			default: return ""; //lanzar runtime exception
+			default:
+				throw new RuntimeException("Propiedad incorrecta");
 		}
 		
 		

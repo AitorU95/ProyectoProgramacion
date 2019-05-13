@@ -1,5 +1,7 @@
 package LN;
 
+import java.io.IOException;
+
 import Comun.itfProperty;
 
 /**
@@ -86,11 +88,11 @@ public class clsVehiculo implements itfProperty
 			case "Minusvalido": return this.isMinusvalido();
 			case "PlazaVehiculo": return this.getPlazaVehiculo();
 			case "ZonaVehiculo" : return this.getZonaVehiculo();
-			default: return ""; //lanzar exception runtime
+			default:
+				throw new RuntimeException("Propiedad incorrecta");
+				
 			
 		}
-		
-		
 		
 	}
 	
@@ -127,7 +129,6 @@ public class clsVehiculo implements itfProperty
 	{
 		
 		String zona = ZonaVehiculo;
-		int plaza = PlazaVehiculo;
 		clsVehiculo objCast;
 		
 		if(arg0==null)
@@ -140,7 +141,7 @@ public class clsVehiculo implements itfProperty
 		// TODO Auto-generated method stub
 		return zona.compareTo(objCast.getZonaVehiculo());
 		
-		return plaza.compareTo(objCast.getPlazaVehiculo());
+		
 		}
 	
 

@@ -58,7 +58,8 @@ public class clsTipoVehiculo extends clsVehiculo implements itfProperty
 		
 		switch(propiedad) {
 			case "TipoVehiculo": return this.getTipoVehiculo();
-			default: return ""; //lanzar runtime exception
+			default:
+				throw new RuntimeException("Propiedad incorrecta");
 		}
 		
 		
