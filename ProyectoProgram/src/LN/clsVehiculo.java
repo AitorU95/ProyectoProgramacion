@@ -127,6 +127,7 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 
 	public int compareTo(clsVehiculo otro) {
 		
+<<<<<<< HEAD
 		return Integer.compare(this.PlazaVehiculo, otro.PlazaVehiculo);
 	}
 	
@@ -136,6 +137,13 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 	
 	
 	
+=======
+		objCast = (clsVehiculo)arg0;
+		// TODO Auto-generated method stub
+		return zona.compareTo(objCast.getZonaVehiculo());
+	
+		}
+>>>>>>> master
 	
 
 }
