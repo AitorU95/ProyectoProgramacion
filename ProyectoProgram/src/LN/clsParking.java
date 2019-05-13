@@ -1,6 +1,7 @@
 package LN;
 
 import Comun.itfProperty;
+import Excepciones.PropiedadInexistente;
 
 /**
  * Clase Principal parking, la cual contiene la informacion general sobre el parking.
@@ -97,7 +98,7 @@ public class clsParking implements itfProperty
 			case "PlazasMinusvalidos" : return this.getPlazasMinusvalidosTotales();
 			case "ZonasTotales": return this.getZonasTotales();
 			default:
-				throw new RuntimeException("Propiedad incorrecta");
+				throw new PropiedadInexistente();
 		}
 		
 		

@@ -3,6 +3,7 @@ package LN;
 import java.io.IOException;
 
 import Comun.itfProperty;
+import Excepciones.PropiedadInexistente;
 
 /**
  * Clase que contiene la informacion sobre el vehiculo.
@@ -89,7 +90,7 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 			case "PlazaVehiculo": return this.getPlazaVehiculo();
 			case "ZonaVehiculo" : return this.getZonaVehiculo();
 			default:
-				throw new RuntimeException("Propiedad incorrecta");
+				throw new PropiedadInexistente();
 				
 			
 		}

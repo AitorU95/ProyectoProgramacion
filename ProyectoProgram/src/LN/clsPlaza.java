@@ -1,6 +1,7 @@
 package LN;
 
 import Comun.itfProperty;
+import Excepciones.PropiedadInexistente;
 
 /**
  * Clase que contiene la informacion sobre la plaza.
@@ -73,7 +74,7 @@ public class clsPlaza implements itfProperty
 			case "PlazaOcupada": return this.isPlazaOcupada();
 			case "ZonaDeLaPlaza": return this.getZonaDeLaPlaza();
 			default:
-				throw new RuntimeException("Propiedad incorrecta");
+				throw new PropiedadInexistente();
 		}
 		
 		

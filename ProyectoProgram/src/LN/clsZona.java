@@ -1,6 +1,7 @@
 package LN;
 
 import Comun.itfProperty;
+import Excepciones.PropiedadInexistente;
 
 /**
  * Clase que contiene información sobre la zona en la que se encuentran los vehículos dentro del parking.
@@ -93,7 +94,8 @@ public class clsZona implements itfProperty
 			case "PlazasCocheZona": return this.getPlazasCocheZona();
 			case "PlazasMotoZona": return this.getPlazasMotoZona();
 			case "PlazasMinusvalidoZona" : return this.getPlazasMinusvalidoZona();
-			default: return ""; //lanzar runtime exception
+			default: 
+				throw new PropiedadInexistente();
 		}
 		
 		

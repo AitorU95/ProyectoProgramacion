@@ -1,6 +1,7 @@
 package LN;
 
 import Comun.itfProperty;
+import Excepciones.PropiedadInexistente;
 
 /**
  * Clase creada para identificar el tipo de vehiculo que hay en la plaza.
@@ -59,7 +60,7 @@ public class clsTipoVehiculo extends clsVehiculo implements itfProperty
 		switch(propiedad) {
 			case "TipoVehiculo": return this.getTipoVehiculo();
 			default:
-				throw new RuntimeException("Propiedad incorrecta");
+				throw new PropiedadInexistente();
 		}
 		
 		
