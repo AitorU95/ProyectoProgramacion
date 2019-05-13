@@ -139,9 +139,12 @@ public class clsVehiculo implements itfProperty
 		
 		objCast = (clsVehiculo)arg0;
 		// TODO Auto-generated method stub
-		return zona.compareTo(objCast.getZonaVehiculo());
+		return zona.compareTo(objCast.getZonaVehiculo();
 		
+<<<<<<< Updated upstream
 		
+=======
+>>>>>>> Stashed changes
 		}
 	
 
