@@ -7,8 +7,6 @@ import Comun.itfProperty;
 import Excepciones.clsMatriculaIncorrecta;
 import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
-import LD.clsComparadorPlaza;
-import LD.clsComparadorZona;
 
 /**
  * Clase que sirve de enlace entre la LP y la LN

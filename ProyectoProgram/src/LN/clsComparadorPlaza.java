@@ -1,7 +1,5 @@
-package LD;
+package LN;
 import java.util.Comparator;
-
-import LN.clsVehiculo;
 
 public class clsComparadorPlaza implements Comparator<clsVehiculo> 
 {

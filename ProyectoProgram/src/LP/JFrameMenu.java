@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JSplitPane;
 
 public class JFrameMenu extends javax.swing.JFrame {
 
