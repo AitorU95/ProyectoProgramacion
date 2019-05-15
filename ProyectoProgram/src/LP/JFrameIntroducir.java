@@ -1,12 +1,24 @@
 package LP;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+/**
+ * Clase JFrame que nos permite introducir un vehículo en el parking
+ * @author Industria 4.0
+ *
+ */
 
 public class JFrameIntroducir extends JFrame {
 
@@ -15,6 +27,9 @@ public class JFrameIntroducir extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField txt_matrícula;
+	private JTextField txt_zona;
+	private JTextField txt_plaza;
 
 	/**
 	 * Launch the application.
@@ -40,11 +55,73 @@ public class JFrameIntroducir extends JFrame {
 		setBounds(100, 100, 659, 501);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		JLabel lblIntroduceLosDatos = new JLabel("Introduce los datos del veh\u00EDculo que quieres introducir");
-		contentPane.add(lblIntroduceLosDatos, BorderLayout.NORTH);
+		final JFrameMenu volver = new JFrameMenu();
+		
+		JLabel lblIntroduceLaInformacin = new JLabel("Introduce la informaci\u00F3n del veh\u00EDculo");
+		lblIntroduceLaInformacin.setBounds(221, 11, 271, 58);
+		contentPane.add(lblIntroduceLaInformacin);
+		
+		JLabel lblTipoDeVehculo = new JLabel("Tipo de veh\u00EDculo:");
+		lblTipoDeVehculo.setBounds(39, 69, 100, 24);
+		contentPane.add(lblTipoDeVehculo);
+		
+		JLabel lblMinusvlido = new JLabel("Minusv\u00E1lido:");
+		lblMinusvlido.setBounds(39, 177, 100, 24);
+		contentPane.add(lblMinusvlido);
+		
+		JComboBox<Object> cmb_minusvalido = new JComboBox<Object>();
+		cmb_minusvalido.setModel(new DefaultComboBoxModel<Object>(new String[] {"S\u00CD", "NO"}));
+		cmb_minusvalido.setBounds(39, 212, 140, 35);
+		contentPane.add(cmb_minusvalido);
+		
+		JComboBox<Object> cmb_tipoVehiculo = new JComboBox<Object>();
+		cmb_tipoVehiculo.setModel(new DefaultComboBoxModel<Object>(new String[] {"COCHE", "MOTO"}));
+		cmb_tipoVehiculo.setBounds(39, 104, 140, 35);
+		contentPane.add(cmb_tipoVehiculo);
+		
+		JLabel lblMatrcula = new JLabel("Matr\u00EDcula:");
+		lblMatrcula.setBounds(353, 74, 100, 19);
+		contentPane.add(lblMatrcula);
+		
+		txt_matrícula = new JTextField();
+		txt_matrícula.setBounds(353, 104, 139, 35);
+		contentPane.add(txt_matrícula);
+		txt_matrícula.setColumns(10);
+		
+		JLabel lblZona = new JLabel("Zona:");
+		lblZona.setBounds(353, 177, 100, 24);
+		contentPane.add(lblZona);
+		
+		txt_zona = new JTextField();
+		txt_zona.setBounds(353, 212, 139, 35);
+		contentPane.add(txt_zona);
+		txt_zona.setColumns(10);
+		
+		JLabel lblPlaza = new JLabel("Plaza:");
+		lblPlaza.setBounds(353, 301, 100, 24);
+		contentPane.add(lblPlaza);
+		
+		txt_plaza = new JTextField();
+		txt_plaza.setBounds(353, 336, 139, 33);
+		contentPane.add(txt_plaza);
+		txt_plaza.setColumns(10);
+		
+		JButton btnGuardarVehculo = new JButton("Guardar veh\u00EDculo");
+		btnGuardarVehculo.setBounds(39, 320, 140, 50);
+		contentPane.add(btnGuardarVehculo);
+		
+		JButton btnSalir = new JButton("Volver atras");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Vas a volver al menu");
+				volver.setVisible(true);
+				dispose();
+			}
+		});
+		btnSalir.setBounds(39, 381, 140, 50);
+		contentPane.add(btnSalir);
 	}
-
 }

@@ -1,12 +1,19 @@
 package LP;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+
+/**
+ * Clase JFrame que nos muestra todos los vehículos que tenemos en el parking
+ */
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFrameMostrar extends JFrame {
 
@@ -40,11 +47,25 @@ public class JFrameMostrar extends JFrame {
 		setBounds(100, 100, 659, 496);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		JLabel lblEstaEsLa = new JLabel("Esta es la lista de veh\u00EDculos que hay en el parking");
-		contentPane.add(lblEstaEsLa, BorderLayout.NORTH);
+		final JFrameMenu volver = new JFrameMenu();
+		
+		JLabel lblEstaEsLa = new JLabel("Esta es la lista de los veh\u00EDculos que hay en el parking");
+		lblEstaEsLa.setBounds(166, 11, 336, 32);
+		contentPane.add(lblEstaEsLa);
+		
+		JButton btnNewButton = new JButton("Volver atras");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Vas a volver al menu");
+				volver.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton.setBounds(45, 378, 117, 43);
+		contentPane.add(btnNewButton);
 	}
 
 }
