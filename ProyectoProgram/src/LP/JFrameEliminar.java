@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 /**
  * Clase JFrame que nos permite eliminar un vehículo de los introducidos en el parking
@@ -24,6 +25,7 @@ public class JFrameEliminar extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -54,7 +56,7 @@ public class JFrameEliminar extends JFrame {
 		
 		final JFrameMenu volver = new JFrameMenu();
 		
-		JLabel lblEligeElVehculo = new JLabel("Elige el veh\u00EDculo que deseas eliminar");
+		JLabel lblEligeElVehculo = new JLabel("Escribe la matr\u00EDcula del veh\u00EDculo que deseas eliminar");
 		lblEligeElVehculo.setBounds(217, 11, 254, 39);
 		contentPane.add(lblEligeElVehculo);
 		
@@ -72,10 +74,21 @@ public class JFrameEliminar extends JFrame {
 		JButton btnNewButton = new JButton("Guardar cambios");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Se ha eliminado el vehículo, vas a volver al menu");
+				volver.setVisible(true);
+				dispose();
 			}
 		});
 		btnNewButton.setBounds(499, 304, 124, 50);
 		contentPane.add(btnNewButton);
+		
+		JLabel lblMatrcula = new JLabel("Matr\u00EDcula:");
+		lblMatrcula.setBounds(296, 61, 86, 26);
+		contentPane.add(lblMatrcula);
+		
+		textField = new JTextField();
+		textField.setBounds(258, 98, 124, 26);
+		contentPane.add(textField);
+		textField.setColumns(10);
 	}
-
 }

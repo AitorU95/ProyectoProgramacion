@@ -2,6 +2,7 @@ package LP;
 
 import java.awt.EventQueue;
 
+
 /**
  * Clase JFrame que nos muestra todos los vehículos que tenemos en el parking
  */
@@ -14,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JScrollPane;
 
 public class JFrameMostrar extends JFrame {
 
@@ -22,6 +25,7 @@ public class JFrameMostrar extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextField textArea;
 
 	/**
 	 * Launch the application.
@@ -66,6 +70,13 @@ public class JFrameMostrar extends JFrame {
 		});
 		btnNewButton.setBounds(45, 378, 117, 43);
 		contentPane.add(btnNewButton);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(23, 49, 610, 304);
+		contentPane.add(scrollPane);
+		
+		textArea = new JTextField();
+		scrollPane.setViewportView(textArea);
+		textArea.setColumns(10);
 	}
-
 }

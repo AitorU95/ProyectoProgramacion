@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import LN.clsGestorLN;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
@@ -72,11 +75,17 @@ public class JFrameIntroducir extends JFrame {
 		lblMinusvlido.setBounds(39, 177, 100, 24);
 		contentPane.add(lblMinusvlido);
 		
+		/**
+		 * JComboBox con el que se introduce si el vehículo es minusválido
+		 */
 		JComboBox<Object> cmb_minusvalido = new JComboBox<Object>();
 		cmb_minusvalido.setModel(new DefaultComboBoxModel<Object>(new String[] {"S\u00CD", "NO"}));
 		cmb_minusvalido.setBounds(39, 212, 140, 35);
 		contentPane.add(cmb_minusvalido);
 		
+		/**
+		 * JComboBox con el que introduce el tipo de vehículo
+		 */
 		JComboBox<Object> cmb_tipoVehiculo = new JComboBox<Object>();
 		cmb_tipoVehiculo.setModel(new DefaultComboBoxModel<Object>(new String[] {"COCHE", "MOTO"}));
 		cmb_tipoVehiculo.setBounds(39, 104, 140, 35);
@@ -86,6 +95,9 @@ public class JFrameIntroducir extends JFrame {
 		lblMatrcula.setBounds(353, 74, 100, 19);
 		contentPane.add(lblMatrcula);
 		
+		/**
+		 * JTextField con el que introduce la matrícula del vehículo
+		 */
 		txt_matrícula = new JTextField();
 		txt_matrícula.setBounds(353, 104, 139, 35);
 		contentPane.add(txt_matrícula);
@@ -95,6 +107,9 @@ public class JFrameIntroducir extends JFrame {
 		lblZona.setBounds(353, 177, 100, 24);
 		contentPane.add(lblZona);
 		
+		/**
+		 * JTextField con el que introduce la zona del vehículo
+		 */
 		txt_zona = new JTextField();
 		txt_zona.setBounds(353, 212, 139, 35);
 		contentPane.add(txt_zona);
@@ -104,12 +119,23 @@ public class JFrameIntroducir extends JFrame {
 		lblPlaza.setBounds(353, 301, 100, 24);
 		contentPane.add(lblPlaza);
 		
+		/**
+		 * JTextField con el que se introduce la plaza del vehículo
+		 */
 		txt_plaza = new JTextField();
 		txt_plaza.setBounds(353, 336, 139, 33);
 		contentPane.add(txt_plaza);
 		txt_plaza.setColumns(10);
 		
 		JButton btnGuardarVehculo = new JButton("Guardar veh\u00EDculo");
+		btnGuardarVehculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				JOptionPane.showMessageDialog(null, "Se ha guardado los datos del vehículo, vas a volver al menu");
+				volver.setVisible(true);
+				dispose();
+			}
+		});
 		btnGuardarVehculo.setBounds(39, 320, 140, 50);
 		contentPane.add(btnGuardarVehculo);
 		
