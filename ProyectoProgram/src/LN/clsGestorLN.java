@@ -123,7 +123,7 @@ public class clsGestorLN
 	 * @throws clsPlazaOcupada
 	 * @throws clsMatriculaIncorrecta
 	 */
-	public void AltaVehiculo (String matricula, boolean minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida, clsPlazaOcupada, clsMatriculaIncorrecta
+	public void AltaVehiculo (String matricula, String minusvalido, int plazaVehiculo, String letrazona) throws clsMatriculaVehiculoRepetida, clsPlazaOcupada, clsMatriculaIncorrecta
 	{
 		
 		clsVehiculo objVehiculo;

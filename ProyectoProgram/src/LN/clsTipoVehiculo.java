@@ -25,7 +25,7 @@ public class clsTipoVehiculo extends clsVehiculo implements itfProperty
 	 *Constructor, Getters y setters de la clase
 	 */
 	
-	public clsTipoVehiculo(String tipovehiculo, String matricula, boolean minusvalido, int plazaVehiculo, String ZonaVehiculo)
+	public clsTipoVehiculo(String tipovehiculo, String matricula, String minusvalido, int plazaVehiculo, String ZonaVehiculo)
 	{
 	
 		super(matricula, minusvalido, plazaVehiculo, ZonaVehiculo);

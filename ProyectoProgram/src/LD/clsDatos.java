@@ -26,12 +26,12 @@ public class clsDatos {
 	/**
 	 * Objeto para crear la consulta a base de datos.
 	 */
-	PreparedStatement ps=null;
+	PreparedStatement ps = null;
 	
 	/**
 	 * Objeto para devolver el resultado de la consulta.
 	 */
-	ResultSet rs=null;
+	ResultSet rs = null;
 	
 	
 	public clsDatos()
@@ -47,35 +47,31 @@ public class clsDatos {
 	 {
 		 
 		 
-		 try 
-		 {
+		 try {
+			 
 		   Class.forName(DRIVER).newInstance();
 		   conn = DriverManager.getConnection(URL+SCHEMA+TIME,USER,PASS);
 		   System.out.println("Connected to the database");
 		   
 		   
 		 }
-		 catch (Exception e) 
-		 {
+		 catch (Exception e) {
+			 
 		     System.out.println("NO CONNECTION ");
 		 }
-	 }
+}
 	 
 	 
-	 public void Disconnect()
-	 {
-		 
-		 try 
-		 {
+	 public void Disconnect() {
+		 	
+		 try {
 			conn.close();
 			ps.close(); // cerrar el statement tb cierra el resultset.
 		 } 
-		 catch (SQLException e) 
-		 {
+		 catch (SQLException e) {
 			
 		 }
-		 finally 
-		 {
+		 finally {
 			 try {conn.close();} catch(Exception e){/*no hago nada*/}
 			 try {ps.close();} catch(Exception e){/*no hago nada*/}
 		 }
@@ -83,7 +79,7 @@ public class clsDatos {
 		 
 	 }
 	 
-	 public int InsertarVehiculo(String matricula, boolean minusvalido, String plazaVehiculo)
+	 public int InsertarVehiculo(String matricula, String minusvalido, int plazaVehiculo, String ZonaVehiculo)
 	 {
 		 
 		 int regActualizados=0;
@@ -91,15 +87,16 @@ public class clsDatos {
 		 
 		 try 
 		 {
-			ps= conn.prepareStatement(SQL_INSERT_VEHICULO,PreparedStatement.RETURN_GENERATED_KEYS);
+			ps = conn.prepareStatement(SQL_INSERT_VEHICULO,PreparedStatement.RETURN_GENERATED_KEYS);
 			ps.setString(1, matricula);
-			ps.setBoolean(2, minusvalido);
-			ps.setString(3, plazaVehiculo);
+			ps.setString(2, minusvalido);
+			ps.setInt(3, plazaVehiculo);
+			ps.setString(4, ZonaVehiculo);
 			
 			regActualizados=ps.executeUpdate();
 			
-			if(regActualizados ==1)
-			{
+			if(regActualizados ==1) {
+				
 				ResultSet rs = ps.getGeneratedKeys();
 	            if(rs.next())
 	            {
@@ -119,7 +116,16 @@ public class clsDatos {
 		 
 	 }
 	 
-	 public ResultSet DameAlumnos() 
+	 public int BorrarVehiculo(String matricula) {
+		
+		 
+		 
+		 return 0;
+		 
+		 
+	 }
+	 
+	 public ResultSet DameVehiculos() 
 	 {
 		 
 		 
@@ -128,6 +134,7 @@ public class clsDatos {
 		 return rs;
 		 
 	 }
+	 
 	 
 	 private ResultSet sendSelect(String sql)
 	 {

@@ -227,13 +227,9 @@ public class clsMenu
 		System.out.println("¿Minusvalido? (si o no)");
 		String respuesta = UtilidadesLP.leerCadena();
 		
-		boolean minusvalido;
-		if (respuesta == "si") {
-			minusvalido = true;
-			
-		}else {
-			minusvalido = false;
-		}
+		String minusvalido;
+		System.out.println("Es minusvalido? (SI/NO)");
+		minusvalido = UtilidadesLP.leerCadena();
 		
 		try {
 			objg.AltaVehiculo(matricula, minusvalido, letra, zona);

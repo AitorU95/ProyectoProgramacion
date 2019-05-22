@@ -20,7 +20,7 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 	 */
 	
 	private String Matricula;
-	private boolean Minusvalido;
+	private String Minusvalido;
 	private int PlazaVehiculo;
 	private String ZonaVehiculo;
 	
@@ -30,7 +30,7 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 	 * Constructor, getters y setter de la clase
 	 */
 	
-	public clsVehiculo(String matricula, boolean minusvalido, int plazaVehiculo,String zonaVehiculo) {
+	public clsVehiculo(String matricula, String minusvalido, int plazaVehiculo,String zonaVehiculo) {
 		
 		this.Matricula = matricula;
 		this.Minusvalido = minusvalido;
@@ -46,11 +46,11 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 		Matricula = matricula;
 	}
 
-	public boolean isMinusvalido() {
+	public String isMinusvalido() {
 		return Minusvalido;
 	}
 
-	public void setMinusvalido(boolean minusvalido) {
+	public void setMinusvalido(String minusvalido) {
 		Minusvalido = minusvalido;
 	}
 
@@ -127,23 +127,13 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 
 	public int compareTo(clsVehiculo otro) {
 		
-<<<<<<< HEAD
-		return Integer.compare(this.PlazaVehiculo, otro.PlazaVehiculo);
-	}
-	
-		
 		
 
+		return Integer.compare(this.PlazaVehiculo, otro.PlazaVehiculo);
 	
-	
-	
-=======
-		objCast = (clsVehiculo)arg0;
-		// TODO Auto-generated method stub
-		return zona.compareTo(objCast.getZonaVehiculo());
-	
-		}
->>>>>>> master
+
+		
+	}
 	
 
 }
