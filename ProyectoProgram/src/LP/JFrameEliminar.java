@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import LN.clsGestorLN;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -25,7 +28,7 @@ public class JFrameEliminar extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txt_eliminar;
 
 	/**
 	 * Launch the application.
@@ -64,6 +67,12 @@ public class JFrameEliminar extends JFrame {
 		btnVolverAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Vas a volver al menu");
+				JFrameMenu volver = null;
+				try {
+					volver = new JFrameMenu();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				volver.setVisible(true);
 				dispose();
 			}
@@ -74,6 +83,8 @@ public class JFrameEliminar extends JFrame {
 		JButton btnNewButton = new JButton("Guardar cambios");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				clsGestorLN gestor = new clsGestorLN();
+				gestor.eliminarVehiculo(txt_eliminar.getText());
 				JOptionPane.showMessageDialog(null, "Se ha eliminado el vehículo, vas a volver al menu");
 				volver.setVisible(true);
 				dispose();
@@ -86,9 +97,9 @@ public class JFrameEliminar extends JFrame {
 		lblMatrcula.setBounds(296, 61, 86, 26);
 		contentPane.add(lblMatrcula);
 		
-		textField = new JTextField();
-		textField.setBounds(258, 98, 124, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txt_eliminar = new JTextField();
+		txt_eliminar.setBounds(258, 98, 124, 39);
+		contentPane.add(txt_eliminar);
+		txt_eliminar.setColumns(10);
 	}
 }

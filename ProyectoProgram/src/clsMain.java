@@ -1,6 +1,6 @@
 import Excepciones.clsMatriculaIncorrecta;
 import Excepciones.clsPlazaOcupada;
-import LP.clsMenu;
+import LP.JFrameMenu;
 
 /**
  * Clase main que ejecuta el programa
@@ -17,10 +17,13 @@ public class clsMain
 		 * Llamada a la clase del menu
 		 */
 		
-		clsMenu.MenuPrincipal();
+		//clsMenu.MenuPrincipal();
 		
+		//system.out.println("Fin del programa");
 		
-		System.out.println("Fin del programa");
+		JFrameMenu b = new JFrameMenu();
+		
+		b.setVisible(true);
 		
 		
 		

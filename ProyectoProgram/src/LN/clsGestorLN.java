@@ -127,7 +127,7 @@ public class clsGestorLN
 	{
 		
 		clsVehiculo objVehiculo;
-		objVehiculo = new clsVehiculo(matricula, minusvalido, plazaVehiculo, letrazona);
+		objVehiculo = new clsVehiculo(matricula, minusvalido, plazaVehiculo, letrazona, null);
 		
 		comprobarMatricula(objVehiculo);
 		matriculaIncorrecta(objVehiculo);
@@ -139,6 +139,12 @@ public class clsGestorLN
 		} else {
 			System.out.println("Ya existe este vehículo");
 		}
+	}
+	
+	public ArrayList<clsVehiculo> mostrarVehiculos() {
+		
+		return listaVehiculos;
+		
 	}
 	
 	/**
@@ -243,6 +249,20 @@ public class clsGestorLN
 		Collections.sort(listaVehiculos, new clsComparadorZona());
 		Collections.sort(listaVehiculos, new clsComparadorPlaza());
 		
+	}
+	
+public boolean eliminarVehiculo(String matricula) {
+		
+		boolean isDeleted = false;
+		for (int i = 0; i < listaVehiculos.size() && isDeleted == false; i++) {
+			clsVehiculo clsVehiculo = listaVehiculos.get(i);
+			if(matricula == clsVehiculo.getMatricula()) {
+				listaVehiculos.remove(i);
+				isDeleted = true;
+			}
+			
+		}
+		return isDeleted;
 	}
 	
 }

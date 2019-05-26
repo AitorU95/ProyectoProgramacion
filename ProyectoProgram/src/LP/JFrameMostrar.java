@@ -10,10 +10,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import LN.clsGestorLN;
+import LN.clsLibro;
+import LN.clsVehiculo;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
@@ -68,6 +74,17 @@ public class JFrameMostrar extends JFrame {
 				dispose();
 			}
 		});
+		
+		clsGestorLN gestor = new clsGestorLN();
+		ArrayList<clsVehiculo> listaVehiculos = gestor.mostrarVehiculos();
+		String vehiculo = "";
+		for (clsVehiculo clsVehiculo : listaVehiculos) {
+			vehiculo += "Matrícula: " + clsVehiculo.getMatricula() + "\n" +
+					"Tipo de vehículo: " + clsVehiculo.getTipoVehiculo() + "\n" +
+					"Plaza: " + clsVehiculo.getPlazaVehiculo() + "\n" + 
+					"Zona: " + clsVehiculo.getZonaVehiculo() + "\n" +
+					"---------------------\n";
+		
 		btnNewButton.setBounds(45, 378, 117, 43);
 		contentPane.add(btnNewButton);
 		
@@ -79,4 +96,5 @@ public class JFrameMostrar extends JFrame {
 		scrollPane.setViewportView(textArea);
 		textArea.setColumns(10);
 	}
+}
 }

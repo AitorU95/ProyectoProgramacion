@@ -23,6 +23,7 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 	private String Minusvalido;
 	private int PlazaVehiculo;
 	private String ZonaVehiculo;
+	private String tipoVehiculo;
 	
 	
 	
@@ -30,12 +31,13 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 	 * Constructor, getters y setter de la clase
 	 */
 	
-	public clsVehiculo(String matricula, String minusvalido, int plazaVehiculo,String zonaVehiculo) {
+	public clsVehiculo(String matricula, String minusvalido, int plazaVehiculo, String zonaVehiculo, String tipoVehiculo) {
 		
 		this.Matricula = matricula;
 		this.Minusvalido = minusvalido;
 		this.PlazaVehiculo = plazaVehiculo;
 		this.ZonaVehiculo = zonaVehiculo;
+		this.tipoVehiculo = tipoVehiculo;
 	}
 	
 	public String getMatricula() {
@@ -70,6 +72,14 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 		ZonaVehiculo = zonaVehiculo;
 	}
 
+	public String getTipoVehiculo() {
+		return tipoVehiculo;
+	}
+
+	public void setTipoVehiculo(String tipoVehiculo) {
+		this.tipoVehiculo = tipoVehiculo;
+	}
+
 	@Override
 	public String toString() {
 		return "clsVehiculo [Matricula=" + Matricula + ", Minusvalido=" + Minusvalido + ", PlazaVehiculo="
@@ -89,6 +99,7 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 			case "Minusvalido": return this.isMinusvalido();
 			case "PlazaVehiculo": return this.getPlazaVehiculo();
 			case "ZonaVehiculo" : return this.getZonaVehiculo();
+			case "TipoVehiculo" : return this.getTipoVehiculo();
 			default:
 				throw new PropiedadInexistente();
 				

@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Excepciones.clsMatriculaIncorrecta;
+import Excepciones.clsMatriculaVehiculoRepetida;
+import Excepciones.clsPlazaOcupada;
 import LN.clsGestorLN;
 
 import javax.swing.JLabel;
@@ -130,7 +133,18 @@ public class JFrameIntroducir extends JFrame {
 		JButton btnGuardarVehculo = new JButton("Guardar veh\u00EDculo");
 		btnGuardarVehculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				clsGestorLN gestor = new clsGestorLN();
+				try {
+					gestor.AltaVehiculo(Integer.parseInt(txt_matrícula.getText()), txt_plaza.getText(), txt_zona.getText());
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				} catch (clsMatriculaIncorrecta e) {
+					e.getMessage();
+				} catch (clsMatriculaVehiculoRepetida e) {
+					e.getMessage();
+				} catch (clsPlazaOcupada e) {
+					e.getMessage();
+				}
 				JOptionPane.showMessageDialog(null, "Se ha guardado los datos del vehículo, vas a volver al menu");
 				volver.setVisible(true);
 				dispose();

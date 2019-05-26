@@ -51,10 +51,6 @@ public class JFrameMenu extends javax.swing.JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		final JFrameIntroducir introducir = new JFrameIntroducir();
-		final JFrameMostrar mostrar = new JFrameMostrar();
-		final JFrameEliminar eliminar = new JFrameEliminar();
-		
 		JLabel lblBienvenidAlParking = new JLabel("Bienvenid@ al parking, \u00BFqu\u00E9 deseas hacer?");
 		lblBienvenidAlParking.setBounds(210, 29, 238, 32);
 		contentPane.add(lblBienvenidAlParking);
@@ -63,6 +59,12 @@ public class JFrameMenu extends javax.swing.JFrame {
 		btnIntroducirUnVehculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Has seleccionado: Introducir un vehículo");
+				JFrameIntroducir introducir = null;
+				try {
+					introducir = new JFrameIntroducir();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				introducir.setVisible(true);
 				dispose();
 			}
@@ -74,6 +76,12 @@ public class JFrameMenu extends javax.swing.JFrame {
 		btnMostrarLaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Has seleccionado: Mostrar la lista de vehículos");
+				JFrameMostrar mostrar = null;
+				try {
+					mostrar = new JFrameMostrar();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				mostrar.setVisible(true);
 				dispose();
 			}
@@ -85,6 +93,12 @@ public class JFrameMenu extends javax.swing.JFrame {
 		btnEliminarUnVehculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Has seleccionado: Eliminar un vehículo");
+				JFrameEliminar eliminar = null;
+				try {
+					eliminar = new JFrameEliminar();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				eliminar.setVisible(true);
 				dispose();
 			}
