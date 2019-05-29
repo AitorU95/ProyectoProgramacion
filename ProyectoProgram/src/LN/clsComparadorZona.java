@@ -13,7 +13,6 @@ public class clsComparadorZona implements Comparator<clsVehiculo>
 	{
 		
 		return o1.getZonaVehiculo().compareTo(o2.getZonaVehiculo());
-		
 	}
 
 }

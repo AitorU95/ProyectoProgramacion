@@ -180,7 +180,7 @@ public class clsGestorLN {
 		
 		for (clsVehiculo objVehiculo : listaVehiculos) {
 			
-			if(objVehiculo.getMatricula().equalsIgnoreCase(nuevoVehiculo.getMatricula()) ) {
+			if(objVehiculo.getMatricula() == nuevoVehiculo.getMatricula() ) {
 				
 				throw new clsMatriculaVehiculoRepetida();
 				
@@ -231,7 +231,7 @@ public class clsGestorLN {
 		
 	}
 	
-public boolean eliminarVehiculo(String matricula) {
+	public boolean eliminarVehiculo(String matricula) {
 		
 		boolean isDeleted = false;
 		for (int i = 0; i < listaVehiculos.size() && isDeleted == false; i++) {
