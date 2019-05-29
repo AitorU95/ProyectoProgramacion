@@ -18,17 +18,15 @@ public class clsConstantesDB {
 			"(`Matricula`,\r\n" + 
 			"`Minusvalido`,\r\n" + 
 			"`Plaza_idPlaza`,\r\n" + 
-			"`ZonaVehiculo`)\r\n" + 
+			"`ZonaVehiculo`,\r\n" + 
+			"`tipoVehiculo`)\r\n" + 
 			"VALUES\r\n" + 
-			"(?,?,?,?);\r\n";
+			"(?,?,?,?,?);";
 	
-	public static final String SQL_SELECT_VEHICULO = "SELECT `vehiculo`.`Matricula`,\r\n" + 
-			"    `vehiculo`.`Minusvalido`,\r\n" + 
-			"    `vehiculo`.`Plaza_idPlaza`,\r\n" + 
-			"    `vehiculo`.`ZonaVehiculo`\r\n" + 
-			"FROM `mydb`.`vehiculo`;";
+	public static final String SQL_SELECT_VEHICULO = "SELECT FROM `mydb`.`vehiculo`;";
 	
-	public static final String SQL_DELETE_VEHICULO = "DELETE FROM `mydb`.`vehiculo`";
+	public static final String SQL_DELETE_VEHICULO = "DELETE FROM `mydb`.`vehiculo`\r\n" + 
+			"WHERE Matricula = ?;";
 	
 	
 	

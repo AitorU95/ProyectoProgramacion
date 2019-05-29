@@ -7,14 +7,16 @@ import Comun.itfProperty;
 import Excepciones.clsMatriculaIncorrecta;
 import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
+import LD.clsDatos;
 
 /**
  * Clase que sirve de enlace entre la LP y la LN
  */
 
 
-public class clsGestorLN 
-{
+public class clsGestorLN {
+	
+	clsDatos objDatos = new clsDatos();
 	
 	/**
 	 * Creamos los arrays que guardaran los distintos objetos dependiendo de cada clase
@@ -147,26 +149,6 @@ public class clsGestorLN
 		
 	}
 	
-	/**
-	 * metodo que crea un array de los vehiculos existentes para poder mostrarlos
-	 * @return
-	 */
-	
-	public ArrayList<itfProperty> MostrarVehiculos()
-	{
-		
-		ArrayList<itfProperty> retorno;
-		
-		retorno = new ArrayList <itfProperty>();
-		
-		for(clsVehiculo a:listaVehiculos)
-		{
-			retorno.add(a);
-		}
-		
-		return retorno;
-	}
-	
 	
 	/**
 	 * metodo para comprobar si ya existe un vehículo
@@ -178,8 +160,8 @@ public class clsGestorLN
 		
 		boolean retorno = false;
 		
-		for(clsVehiculo b:listaVehiculos)
-		{
+		for(itfProperty b:listaVehiculos) {
+			
 			if(b.equals(_vehiculo)) return true;
 			
 		}
@@ -227,15 +209,13 @@ public class clsGestorLN
 	 * @param nuevoVehiculo
 	 * @throws clsMatriculaIncorrecta
 	 */
-	public static void matriculaIncorrecta(clsVehiculo nuevoVehiculo) throws clsMatriculaIncorrecta {
-		
-		for(clsVehiculo objvehiculo: listaVehiculos) {
+	public static void matriculaIncorrecta(clsVehiculo vehiculo) throws clsMatriculaIncorrecta {
 			
-			if(objvehiculo.getMatricula().length() != 7  ) {
+			if (vehiculo.getMatricula().length() != 7) {
 				
 				throw new clsMatriculaIncorrecta();
 			}
-		}
+		
 	}
 	
 	/**

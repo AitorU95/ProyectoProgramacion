@@ -43,119 +43,110 @@ public class clsDatos {
 	 * Método para la conexión a la base de datos.
 	 * 
 	 */
-	 public void Connect()
-	 {
-		 
-		 
-		 try {
-			 
-		   Class.forName(DRIVER).newInstance();
-		   conn = DriverManager.getConnection(URL+SCHEMA+TIME,USER,PASS);
-		   System.out.println("Connected to the database");
-		   
-		   
-		 }
-		 catch (Exception e) {
-			 
-		     System.out.println("NO CONNECTION ");
-		 }
-}
-	 
-	 
-	 public void Disconnect() {
-		 	
-		 try {
-			conn.close();
-			ps.close(); // cerrar el statement tb cierra el resultset.
-		 } 
-		 catch (SQLException e) {
-			
-		 }
-		 finally {
-			 try {conn.close();} catch(Exception e){/*no hago nada*/}
-			 try {ps.close();} catch(Exception e){/*no hago nada*/}
-		 }
-		 
-		 
-	 }
-	 
-	 public int InsertarVehiculo(String matricula, String minusvalido, int plazaVehiculo, String ZonaVehiculo)
-	 {
-		 
-		 int regActualizados=0;
-		 int retorno=0;
-		 
-		 try 
-		 {
-			ps = conn.prepareStatement(SQL_INSERT_VEHICULO,PreparedStatement.RETURN_GENERATED_KEYS);
-			ps.setString(1, matricula);
-			ps.setString(2, minusvalido);
-			ps.setInt(3, plazaVehiculo);
-			ps.setString(4, ZonaVehiculo);
-			
-			regActualizados=ps.executeUpdate();
-			
-			if(regActualizados ==1) {
-				
-				ResultSet rs = ps.getGeneratedKeys();
-	            if(rs.next())
-	            {
-	                retorno= rs.getInt(1);
-	            }
-			}
-			
-			
-		 } 
-		 catch (SQLException e) 
-		 {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		 }
-		 
-		 return retorno;
-		 
-	 }
-	 
-	 public int BorrarVehiculo(String matricula) {
+	public Connection conectarBD() throws SQLException {
 		
-		 
-		 
-		 return 0;
-		 
-		 
-	 }
-	 
-	 public ResultSet DameVehiculos() 
-	 {
-		 
-		 
-		 rs= sendSelect(SQL_SELECT_VEHICULO);
-		 
-		 return rs;
-		 
-	 }
-	 
-	 
-	 private ResultSet sendSelect(String sql)
-	 {
-			
-			
-			try 
-			{
-				ps = conn.prepareStatement(sql);
-				rs=ps.executeQuery(sql);
-			} 
-			catch (SQLException e) 
-			{
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			return rs; 
-			
-	 }
-	 
+        Connection objConn = null;
 
+        
+        	
+        	objConn = DriverManager.getConnection (URL, USER, PASS);
+        
+        
+
+        return objConn;
+
+	}
+	 
+	 
+	public void desconectarBD() throws SQLException {
+		Connection conexion = null;
+        	
+        	conexion.close();
+        	
+	}
+	 
+	 public static void InsertarVehiculo(String matricula, String minusvalido, int plazaVehiculo, String ZonaVehiculo, String tipoVehiculo) throws SQLException {
+		 
+		 // Instancias la clase que hemos creado anteriormente
+			clsDatos objDatos = new clsDatos();
+
+			// Llamas al método que tiene la clase y te devuelve una conexión
+			Connection objConn = objDatos.conectarBD();
+		 
+			if (objConn != null) {
+				// Preparamos la insert
+				String query = SQL_INSERT_VEHICULO;
+				// Creamos las preparedstaments
+				PreparedStatement objSt = objConn.prepareStatement(query);
+				objSt.setString(1, matricula);
+				objSt.setString(2, minusvalido);
+				objSt.setInt(3, plazaVehiculo);
+				objSt.setString(4, ZonaVehiculo);
+				objSt.setString(5, tipoVehiculo);
+
+				// Ejecutamos la query que hemos preparado
+				objSt.execute();
+
+				// Cerramos el preparedStatement
+				objSt.close();
+
+				// Cerramos la conexión
+				objConn.close();
+
+			}
+	 }
+	 
+	 public void BorrarVehiculo(String matricula) throws SQLException {
+		 
+		// Instancias la clase que hemos creado anteriormente
+			clsDatos objDatos = new clsDatos();
+
+			// Llamas al método que tiene la clase y te devuelve una conexión
+			Connection objConn = objDatos.conectarBD();
+
+			if (objConn != null) {
+				// Preparamos el delete
+				String query = "DELETE FROM `mydb`.`vehiculo`\\r\\n\" + \r\n" + 
+						"\"WHERE Matricula = ?;";
+
+				// Creamos las preparedstaments
+				PreparedStatement objSt = objConn.prepareStatement(query);
+				objSt.setString(1, matricula);
+
+				// Ejecutamos la query que hemos preparado
+				objSt.execute();
+
+				// Cerramos el preparedStatement
+				objSt.close();
+
+				// Cerramos la conexión
+				objConn.close();
+
+			}
+
+		 
+	 }
+	 
+	 public ResultSet ConsultarVehiculos() throws SQLException {
+		 
+		 
+		 ResultSet rs = null;
+		// Instancias la clase que hemos creado anteriormente
+		clsDatos objDatos = new clsDatos();
+
+		// Llamas al método que tiene la clase y te devuelve una conexión
+		Connection objConn = objDatos.conectarBD();
+
+		if (objConn != null) {
+			// Preparamos la consulta
+			Statement st = objConn.createStatement();
+			rs = st.executeQuery(SQL_SELECT_VEHICULO);
+
+		}
+		
+		return rs;
+		
+	 }
+	 
 
 }
