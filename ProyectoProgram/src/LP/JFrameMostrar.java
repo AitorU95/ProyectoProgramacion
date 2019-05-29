@@ -12,7 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import LN.clsGestorLN;
-import LN.clsLibro;
 import LN.clsVehiculo;
 
 import javax.swing.JLabel;
@@ -23,6 +22,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class JFrameMostrar extends JFrame {
 
@@ -66,14 +66,20 @@ public class JFrameMostrar extends JFrame {
 		lblEstaEsLa.setBounds(166, 11, 336, 32);
 		contentPane.add(lblEstaEsLa);
 		
-		JButton btnNewButton = new JButton("Volver atras");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnNewButton_1 = new JButton("Volver atras");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Vas a volver al menu");
 				volver.setVisible(true);
 				dispose();
 			}
 		});
+		btnNewButton_1.setBounds(471, 390, 127, 56);
+		contentPane.add(btnNewButton_1);
+		
+		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setBounds(10, 54, 585, 325);
+		contentPane.add(textArea_1);
 		
 		clsGestorLN gestor = new clsGestorLN();
 		ArrayList<clsVehiculo> listaVehiculos = gestor.mostrarVehiculos();
@@ -84,9 +90,6 @@ public class JFrameMostrar extends JFrame {
 					"Plaza: " + clsVehiculo.getPlazaVehiculo() + "\n" + 
 					"Zona: " + clsVehiculo.getZonaVehiculo() + "\n" +
 					"---------------------\n";
-		
-		btnNewButton.setBounds(45, 378, 117, 43);
-		contentPane.add(btnNewButton);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(23, 49, 610, 304);
