@@ -135,7 +135,7 @@ public class JFrameIntroducir extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				clsGestorLN gestor = new clsGestorLN();
 				try {
-					gestor.AltaVehiculo(Integer.parseInt(txt_matrícula.getText()), txt_plaza.getText(), txt_zona.getText());
+					gestor.AltaVehiculo(txt_matrícula.getText(), (String) cmb_minusvalido.getSelectedItem(), Integer.parseInt(txt_plaza.getText()), txt_zona.getText(), (String) cmb_tipoVehiculo.getSelectedItem());
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				} catch (clsMatriculaIncorrecta e) {

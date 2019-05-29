@@ -28,7 +28,7 @@ public class clsTipoVehiculo extends clsVehiculo implements itfProperty
 	public clsTipoVehiculo(String tipovehiculo, String matricula, String minusvalido, int plazaVehiculo, String ZonaVehiculo)
 	{
 	
-		super(matricula, minusvalido, plazaVehiculo, ZonaVehiculo);
+		super(matricula, minusvalido, plazaVehiculo, ZonaVehiculo, tipovehiculo);
 		this.TipoVehiculo = tipovehiculo;
 		
 	}
