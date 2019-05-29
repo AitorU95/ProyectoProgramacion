@@ -1,11 +1,7 @@
 package LP;
 
 import java.awt.EventQueue;
-
-
-/**
- * Clase JFrame que nos muestra todos los vehículos que tenemos en el parking
- */
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,12 +13,9 @@ import LN.clsVehiculo;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFrameMostrar extends JFrame {
 
@@ -31,7 +24,7 @@ public class JFrameMostrar extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textArea;
+	
 
 	/**
 	 * Launch the application.
@@ -54,7 +47,7 @@ public class JFrameMostrar extends JFrame {
 	 */
 	public JFrameMostrar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 659, 496);
+		setBounds(100, 100, 630, 494);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,24 +55,21 @@ public class JFrameMostrar extends JFrame {
 		
 		final JFrameMenu volver = new JFrameMenu();
 		
-		JLabel lblEstaEsLa = new JLabel("Esta es la lista de los veh\u00EDculos que hay en el parking");
-		lblEstaEsLa.setBounds(166, 11, 336, 32);
-		contentPane.add(lblEstaEsLa);
+		JLabel lblAquPuedesVer = new JLabel("Aqu\u00ED puedes ver todos los veh\u00EDculos que hay en el parking");
+		lblAquPuedesVer.setBounds(163, 11, 282, 34);
+		contentPane.add(lblAquPuedesVer);
 		
-		JButton btnNewButton_1 = new JButton("Volver atras");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnVolverAtras = new JButton("Volver atras");
+		btnVolverAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Vas a volver al menu");
 				volver.setVisible(true);
 				dispose();
 			}
+			
 		});
-		btnNewButton_1.setBounds(471, 390, 127, 56);
-		contentPane.add(btnNewButton_1);
-		
-		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setBounds(10, 54, 585, 325);
-		contentPane.add(textArea_1);
+		btnVolverAtras.setBounds(456, 395, 135, 49);
+		contentPane.add(btnVolverAtras);
 		
 		clsGestorLN gestor = new clsGestorLN();
 		ArrayList<clsVehiculo> listaVehiculos = gestor.mostrarVehiculos();
@@ -90,14 +80,12 @@ public class JFrameMostrar extends JFrame {
 					"Plaza: " + clsVehiculo.getPlazaVehiculo() + "\n" + 
 					"Zona: " + clsVehiculo.getZonaVehiculo() + "\n" +
 					"---------------------\n";
+		}
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(23, 49, 610, 304);
-		contentPane.add(scrollPane);
-		
-		textArea = new JTextField();
-		scrollPane.setViewportView(textArea);
-		textArea.setColumns(10);
-	}
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(10, 56, 594, 328);
+		contentPane.add(textArea);
+		textArea.setText(vehiculo);
+
 }
 }
