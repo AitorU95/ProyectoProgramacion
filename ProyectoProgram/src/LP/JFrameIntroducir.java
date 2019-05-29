@@ -139,11 +139,14 @@ public class JFrameIntroducir extends JFrame {
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				} catch (clsMatriculaIncorrecta e) {
-					e.getMessage();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+					JOptionPane.showMessageDialog(null, "Vas a volver al menu");
 				} catch (clsMatriculaVehiculoRepetida e) {
-					e.getMessage();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+					JOptionPane.showMessageDialog(null, "Vas a volver al menu");
 				} catch (clsPlazaOcupada e) {
-					e.getMessage();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+					JOptionPane.showMessageDialog(null, "Vas a volver al menu");
 				}
 				JOptionPane.showMessageDialog(null, "Se ha guardado los datos del vehículo, vas a volver al menu");
 				volver.setVisible(true);
