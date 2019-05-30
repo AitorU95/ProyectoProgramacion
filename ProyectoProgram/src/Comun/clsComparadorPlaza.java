@@ -1,5 +1,13 @@
-package LN;
+package Comun;
 import java.util.Comparator;
+
+import LN.clsVehiculo;
+
+/**
+ * clase que se utiliza para realizar la comparacion de plazas entre dos vehiculos
+ * @author Industria 4.0
+ *
+ */
 
 public class clsComparadorPlaza implements Comparator<clsVehiculo> 
 {

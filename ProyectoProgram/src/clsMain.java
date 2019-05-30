@@ -18,9 +18,6 @@ public class clsMain
 		 * Llamada a la clase del menu
 		 */
 		
-		//clsMenu.MenuPrincipal();
-		
-		//system.out.println("Fin del programa");
 		
 		JFrameMenu b = new JFrameMenu();
 		

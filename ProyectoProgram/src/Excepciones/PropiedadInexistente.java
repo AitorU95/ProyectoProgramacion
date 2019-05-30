@@ -1,5 +1,11 @@
 package Excepciones;
 
+/**
+ * clase que contiene la excepcion de tipo RunTimeException cuando se intenta obtener una propiedad de un objeto que no existe
+ * @author Industria 4.0
+ *
+ */
+
 public class PropiedadInexistente extends RuntimeException {
 	
 	

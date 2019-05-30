@@ -47,7 +47,7 @@ public class JFrameEliminar extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Creación del frame.
 	 */
 	public JFrameEliminar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,6 +63,9 @@ public class JFrameEliminar extends JFrame {
 		lblEligeElVehculo.setBounds(217, 11, 254, 39);
 		contentPane.add(lblEligeElVehculo);
 		
+		/**
+		 * Botón para volver al menu principal.
+		 */
 		JButton btnVolverAtras = new JButton("Volver atras");
 		btnVolverAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -74,12 +77,15 @@ public class JFrameEliminar extends JFrame {
 		btnVolverAtras.setBounds(499, 371, 124, 50);
 		contentPane.add(btnVolverAtras);
 		
+		/**
+		 * Botón que ejecuta la acción de eliminar el vehiculo cuya matricula hayamos escrito. 
+		 */
 		JButton btnNewButton = new JButton("Guardar cambios");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clsGestorLN gestor = new clsGestorLN();
 				try {
-					gestor.eliminarVehiculo2(txt_eliminar.getText());
+					gestor.eliminarVehiculo2((txt_eliminar.getText()));
 					JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente");
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block

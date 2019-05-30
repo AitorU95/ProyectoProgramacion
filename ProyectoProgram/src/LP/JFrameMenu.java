@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 /**
@@ -27,6 +28,7 @@ public class JFrameMenu extends javax.swing.JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	clsGestorLN objGestor = new clsGestorLN();
 
 	/**
 	 * Launch the application.
@@ -59,6 +61,9 @@ public class JFrameMenu extends javax.swing.JFrame {
 		lblBienvenidAlParking.setBounds(210, 29, 238, 32);
 		contentPane.add(lblBienvenidAlParking);
 		
+		/**
+		 * boton que nos lleva al frame donde introducimos los datos del vehiculo
+		 */
 		JButton btnIntroducirUnVehculo = new JButton("Introducir un veh\u00EDculo");
 		btnIntroducirUnVehculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -76,6 +81,9 @@ public class JFrameMenu extends javax.swing.JFrame {
 		btnIntroducirUnVehculo.setBounds(20, 95, 180, 220);
 		contentPane.add(btnIntroducirUnVehculo);
 		
+		/**
+		 * boton que nos lleva al frame de mostrar la lista
+		 */
 		JButton btnMostrarLaLista = new JButton("Mostrar la lista de veh\u00EDculos");
 		btnMostrarLaLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -97,6 +105,9 @@ public class JFrameMenu extends javax.swing.JFrame {
 		btnMostrarLaLista.setBounds(226, 95, 180, 220);
 		contentPane.add(btnMostrarLaLista);
 		
+		/**
+		 * boton que nos lleva al frame de borrar un vehiculo
+		 */
 		JButton btnEliminarUnVehculo = new JButton("Eliminar un veh\u00EDculo");
 		btnEliminarUnVehculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -118,6 +129,9 @@ public class JFrameMenu extends javax.swing.JFrame {
 		btnEliminarUnVehculo.setBounds(440, 95, 180, 220);
 		contentPane.add(btnEliminarUnVehculo);
 		
+		/**
+		 * botón para cerrar la aplicación
+		 */
 		JButton btnSalirDelParking = new JButton("Salir del parking");
 		btnSalirDelParking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -127,6 +141,24 @@ public class JFrameMenu extends javax.swing.JFrame {
 		});
 		btnSalirDelParking.setBounds(226, 326, 180, 90);
 		contentPane.add(btnSalirDelParking);
+		
+		/**
+		 * botón para cargar los datos del parking
+		 */
+		JButton btnBtncargardatos = new JButton("Cargar Datos");
+		btnBtncargardatos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					objGestor.RecuperarDatosVehiculo();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		});
+		btnBtncargardatos.setBounds(20, 336, 189, 71);
+		contentPane.add(btnBtncargardatos);
 	}
-
 }

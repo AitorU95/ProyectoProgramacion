@@ -57,7 +57,10 @@ public class clsDatos {
 
 	}
 	 
-	 
+	/**
+	 * metodo para la desconexion a base de datos 
+	 * @throws SQLException
+	 */
 	public void desconectarBD() throws SQLException {
 		Connection conexion = null;
         	
@@ -65,6 +68,15 @@ public class clsDatos {
         	
 	}
 	 
+	/**
+	 * metodo para la insercion de vehiculos a la base de datos
+	 * @param matricula
+	 * @param minusvalido
+	 * @param plazaVehiculo
+	 * @param ZonaVehiculo
+	 * @param tipoVehiculo
+	 * @throws SQLException
+	 */
 	 public static void InsertarVehiculo(String matricula, String minusvalido, int plazaVehiculo, String ZonaVehiculo, String tipoVehiculo) throws SQLException {
 		 
 		 // Instancias la clase que hemos creado anteriormente
@@ -96,6 +108,11 @@ public class clsDatos {
 			}
 	 }
 	 
+	 /**
+	  * metodo para eliminar vehiculos de la base de datos
+	  * @param matricula
+	  * @throws SQLException
+	  */
 	 public void BorrarVehiculo(String matricula) throws SQLException {
 		 
 		// Instancias la clase que hemos creado anteriormente
@@ -127,6 +144,12 @@ public class clsDatos {
 		 
 	 }
 	 
+	 /**
+	  * metodo para realizar la consulta a la base de datos
+	  * @return
+	  * @throws SQLException
+	  */
+	 
 	 public ResultSet ConsultarVehiculos() throws SQLException {
 		 
 		 
@@ -141,6 +164,7 @@ public class clsDatos {
 			// Preparamos la consulta
 			Statement st = objConn.createStatement();
 			rs = st.executeQuery(SQL_SELECT_VEHICULO);
+			
 
 		}
 		

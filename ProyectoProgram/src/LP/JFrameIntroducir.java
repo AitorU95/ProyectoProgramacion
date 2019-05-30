@@ -27,6 +27,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -78,7 +79,9 @@ public class JFrameIntroducir extends JFrame {
 		contentPane.setLayout(null);
 		
 		final JFrameMenu volver = new JFrameMenu();
-		
+		/**
+		 * Creación de las etiquetas
+		 */
 		JLabel lblIntroduceLaInformacin = new JLabel("Introduce la informaci\u00F3n del veh\u00EDculo");
 		lblIntroduceLaInformacin.setBounds(221, 11, 271, 58);
 		contentPane.add(lblIntroduceLaInformacin);
@@ -143,6 +146,9 @@ public class JFrameIntroducir extends JFrame {
 		contentPane.add(txt_plaza);
 		txt_plaza.setColumns(10);
 		
+		/**
+		 * botón que guarda nuestro vehiculo una vez hemos introducido correctamente los datos
+		 */
 		JButton btnGuardarVehculo = new JButton("Guardar veh\u00EDculo");
 		btnGuardarVehculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -165,6 +171,9 @@ public class JFrameIntroducir extends JFrame {
 				} catch (clsPlazaOcupada e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
 					JOptionPane.showMessageDialog(null, "Vas a volver al menu");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
 				volver.setVisible(true);
@@ -174,6 +183,9 @@ public class JFrameIntroducir extends JFrame {
 		btnGuardarVehculo.setBounds(39, 320, 140, 50);
 		contentPane.add(btnGuardarVehculo);
 		
+		/**
+		 * botón para volver al menú principal
+		 */
 		JButton btnSalir = new JButton("Volver atras");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -186,140 +198,5 @@ public class JFrameIntroducir extends JFrame {
 		contentPane.add(btnSalir);
 	}
 	
-	
-	public void CrearTabla() {
-		
-		jtVehiculo = null;
-					
-		//CargarDatos();
 
-		TablaVehiculoModel tcm = new TablaVehiculoModel(clsVehiculo);
-					
-					
-						jtVehiculo = new JTable(tcm);
-						jtVehiculo.setPreferredScrollableViewportSize(new Dimension(500, 70));
-						jtVehiculo.setFillsViewportHeight(true);
-						jtVehiculo.setEnabled(true);
-						jtVehiculo.setRowSelectionAllowed(true);
-						tcm.fireTableDataChanged();
-						
-						jspVehiculo = new JScrollPane(jtVehiculo);
-						jspVehiculo.setBounds(10, 236, 457, 164);
-					getContentPane().add(jspVehiculo);
-					tcm.setData(clsVehiculo);
-				}
-	
-	
-	
-	class TablaVehiculoModel extends AbstractTableModel
-    {
-        /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		private String[] columnNames = {"Matricula","Minusvalido","Plaza","Zona", "Tipo de Vehiculo"};
-        Object[][] data;
-        
-        public  TablaVehiculoModel(ArrayList<itfProperty>clsVehiculo)
-        {
-        	
-        	super();
-        	
-    		int filas = clsVehiculo.size();
-    		int cont;
-    		data=new Object[filas][];
-    		cont=0;
-    		
-    		
-    		//Nos recorremos el map para cargar la variable data[][]
-    		for (itfProperty b: clsVehiculo)
-    		{
-    			Object[]a={b.getProperty("Matricula"),
-    					   b.getProperty("Minusvalido"),
-    					   b.getProperty("PlazaVehiculo"),
-    					   b.getProperty("ZonaVehiculo"),
-    					   b.getProperty("TipoVehiculo")};
-    			data[cont]=a;
-    			cont++;
-    		}
-    		
-        	
-        }
-        
-        public void setData(ArrayList<itfProperty> clsVehiculo) 
-        {
-        	int filas = clsVehiculo.size();
-    		int cont;
-    		data=new Object[filas][];
-    		cont=0;
-    		
-    		
-    		for (itfProperty b: clsVehiculo)
-    		{
-    			Object[]a={b.getProperty("Matricula"),
- 					   	b.getProperty("Minusvalido"),
- 					   b.getProperty("PlazaVehiculo"),
- 					   b.getProperty("ZonaVehiculo"),
- 					   b.getProperty("TipoVehiculo")};
-    			data[cont]=a;
-    			cont++;
-    		}
-        }
-        
-        
-        
-        
-        
-        public int getColumnCount() 
-        {
-            return columnNames.length;
-        }
-
-        public int getRowCount() {
-            return data.length;
-        }
-
-        public String getColumnName(int col) {
-            return columnNames[col];
-        }
-
-        public Object getValueAt(int row, int col) {
-            return data[row][col];
-        }
-
-        /*
-         * JTable uses this method to determine the default renderer/
-         * editor for each cell.  If we didn't implement this method,
-         * then the last column would contain text ("true"/"false"),
-         * rather than a check box.
-         */
-        public Class getColumnClass(int c) {
-            return getValueAt(0, c).getClass();
-        }
-
-        /*
-         * Don't need to implement this method unless your table's
-         * editable.
-         */
-        public boolean isCellEditable(int row, int col) {
-           
-                return false;
-           
-        }
-
-        /*
-         * Don't need to implement this method unless your table's
-         * data can change.
-         */
-        public void setValueAt(Object value, int row, int col) 
-        {
-            
-            data[row][col] = value;
-            fireTableCellUpdated(row, col);
-
-        }
-
-	
-
-}	
 }

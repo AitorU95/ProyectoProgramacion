@@ -1,5 +1,11 @@
 package Excepciones;
 
+/**
+ * clase que controla la excepcion cuando se insertan dos matriculas iguales
+ * @author Industria 4.0
+ *
+ */
+
 public class clsMatriculaVehiculoRepetida extends Exception 
 {
 	

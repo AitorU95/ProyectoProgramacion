@@ -1,9 +1,17 @@
 package LD;
 
+/**
+ * clase que contiene las constantes para realizar las conexiones a base de datos
+ * @author Industria 4.0
+ *
+ */
+
 public class clsConstantesDB {
 	
 
-	//CONSTANTES PARA LA CREACIÓN DEL ACCESO A BASE DE DATOS.
+	/**
+	 * constantes para acceder a la base de datos
+	 */
 	public static final String URL="jdbc:mysql://localhost:3306/";
 	public static final String SCHEMA = "parking";
 	public static final String TIME="?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -13,7 +21,9 @@ public class clsConstantesDB {
 	
 	
 	
-	
+	/**
+	 * constante para realizar las inserts
+	 */
 	public static final String SQL_INSERT_VEHICULO = "INSERT INTO `mydb`.`vehiculo`\r\n" + 
 			"(`Matricula`,\r\n" + 
 			"`Minusvalido`,\r\n" + 
@@ -22,9 +32,13 @@ public class clsConstantesDB {
 			"`tipoVehiculo`)\r\n" + 
 			"VALUES\r\n" + 
 			"(?,?,?,?,?);";
-	
+	/**
+	 * constantes para realizar las selects
+	 */
 	public static final String SQL_SELECT_VEHICULO = "SELECT FROM `mydb`.`vehiculo`;";
-	
+	/**
+	 * constantes para realizar los deletes
+	 */
 	public static final String SQL_DELETE_VEHICULO = "DELETE FROM `mydb`.`vehiculo`\r\n" + 
 			"WHERE Matricula = ?;";
 	

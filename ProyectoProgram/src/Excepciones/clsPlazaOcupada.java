@@ -1,5 +1,11 @@
 package Excepciones;
 
+/**
+ * clase que controla la excepcion cuando se introduce un plaza que ya esta ocupada
+ * @author Industria 4.0
+ *
+ */
+
 public class clsPlazaOcupada extends Exception {
 	
 	/**

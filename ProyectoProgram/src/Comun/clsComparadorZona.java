@@ -1,12 +1,17 @@
-package LN;
+package Comun;
 import java.util.Comparator;
+
+import LN.clsVehiculo;
+
+/**
+ * clase para comparar las zonas entre dos vehiculos
+ * @author Industria 4.0
+ *
+ */
 
 public class clsComparadorZona implements Comparator<clsVehiculo> 
 {
 
-	/**
-	 * metodo que nos permite comparar las zonas de los vehículos
-	 */
 	
 	@Override
 	public int compare(clsVehiculo o1, clsVehiculo o2) 

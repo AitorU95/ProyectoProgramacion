@@ -44,7 +44,7 @@ public class JFrameMostrar extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Creación de las etiquetas y botones.
 	 */
 	public JFrameMostrar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,6 +60,9 @@ public class JFrameMostrar extends JFrame {
 		lblAquPuedesVer.setBounds(163, 11, 282, 34);
 		contentPane.add(lblAquPuedesVer);
 		
+		/**
+		 * botón para volver al menu principal.
+		 */
 		JButton btnVolverAtras = new JButton("Volver atras");
 		btnVolverAtras.setBounds(456, 395, 135, 49);
 		btnVolverAtras.addActionListener(new ActionListener() {
@@ -76,6 +79,9 @@ public class JFrameMostrar extends JFrame {
 		scrollPane.setBounds(32, 92, 540, 290);
 		contentPane.add(scrollPane);
 		
+		/**
+		 * TextArea que muestra los datos de nuestro arraylist
+		 */
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		String texto = "";

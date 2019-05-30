@@ -5,7 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
+import Comun.clsComparadorPlaza;
+import Comun.clsComparadorZona;
 import Comun.itfProperty;
 import Excepciones.clsListaVacia;
 import Excepciones.clsMatriculaIncorrecta;
@@ -114,7 +117,7 @@ public class clsGestorLN {
 	}
 	
 	/**
-	 *  metodo que usa el gestor para crear objetos de tipo vehiculo y añadirlos a su correspondiente array
+	 *  metodo que usa el gestor para crear objetos de tipo vehiculo y añadirlos a su correspondiente array y a la base de datos
 	 * @param matricula
 	 * @param minusvalido
 	 * @param plazaVehiculo
@@ -122,8 +125,9 @@ public class clsGestorLN {
 	 * @throws clsMatriculaVehiculoRepetida
 	 * @throws clsPlazaOcupada
 	 * @throws clsMatriculaIncorrecta
+	 * @throws SQLException 
 	 */
-	public void AltaVehiculo (String matricula, String minusvalido, int plazaVehiculo, String letrazona, String tipoVehiculo) throws clsMatriculaVehiculoRepetida, clsPlazaOcupada, clsMatriculaIncorrecta
+	public void AltaVehiculo (String matricula, String minusvalido, int plazaVehiculo, String letrazona, String tipoVehiculo) throws clsMatriculaVehiculoRepetida, clsPlazaOcupada, clsMatriculaIncorrecta, SQLException
 	{
 		
 		clsVehiculo objVehiculo;
@@ -137,6 +141,7 @@ public class clsGestorLN {
 		if(!Existe(objVehiculo)) {
 			
 			listaVehiculos.add(objVehiculo);
+			objDatos.InsertarVehiculo(matricula, minusvalido, plazaVehiculo, letrazona, tipoVehiculo);
 			
 		} else {
 			
@@ -144,6 +149,10 @@ public class clsGestorLN {
 		}
 	}
 	
+	/**
+	 * metodo para volcar los datos de la base de datos a nuestro programa
+	 * @throws SQLException
+	 */
 	public void RecuperarDatosVehiculo() throws SQLException {
 
 		Connection objConn = objDatos.conectarBD();
@@ -168,6 +177,10 @@ public class clsGestorLN {
 
 	}
 	
+	/**
+	 * metodo para mostrar la listaVehiculos
+	 * @return
+	 */
 	public ArrayList<clsVehiculo> mostrarVehiculos() {
 		
 		ordenarVehiculos();
@@ -176,7 +189,10 @@ public class clsGestorLN {
 		
 	}
 	
-	
+	/**
+	 * metodo para visualizar la lista
+	 * @return
+	 */
 	public ArrayList<itfProperty> VisualizarVehiculos(){
 		
 		ArrayList <itfProperty> retorno;
@@ -188,42 +204,32 @@ public class clsGestorLN {
 		return retorno;
 	}
 	
-	//public void EliminarVehiculo(String matricula) throws SQLException {
-
-		//objDatos.BorrarVehiculo(matricula);
-
-	//}
-
-	//public void EliminarVehiculoArrayList(String matricula) {
-		
-		//clsVehiculo vehiculo = null;
-
-		//vehiculo.setMatricula(matricula);
-
-		//int b = 0;
-		//for (itfProperty a : listaVehiculos) {
-			//if (a.equals(vehiculo)) {
-				//b = listaVehiculos.indexOf(a);
-
-			//}
-		//}
-		//listaVehiculos.remove(b);
-	//}
 	
-	public boolean eliminarVehiculo2(String matricula) {
+	/**
+	 * metodo para eliminar vehiculos del arraylist como de la base de datos
+	 * @param matricula
+	 * @throws SQLException
+	 */
+	public void eliminarVehiculo2(String matricula) throws SQLException {
 		
-		boolean isDeleted = false;
-		for (int i = 0; i < listaVehiculos.size() && isDeleted == false; i++) {
-			clsVehiculo objVehiculo = listaVehiculos.get(i);
-			if(matricula == objVehiculo.getMatricula()) {
-				listaVehiculos.remove(i);
-				isDeleted = true;
+		Iterator <clsVehiculo> iter = listaVehiculos.iterator();
+		while(iter.hasNext()) {
+			clsVehiculo objVehiculo = iter.next();
+			if(objVehiculo.getMatricula().equals(matricula)) {
+				
+				iter.remove();
+				objDatos.BorrarVehiculo(matricula);
 			}
 			
 		}
-		return isDeleted;
+		
+		
 	}
 	
+	/**
+	 * metodo para comprobar si la lista de vehiculos esta vacia
+	 * @throws clsListaVacia
+	 */
 	public void listaVacia() throws clsListaVacia {
 		
 		if(listaVehiculos.size() == 0) {
@@ -317,18 +323,6 @@ public class clsGestorLN {
 		
 	}
 	
-	public boolean eliminarVehiculo(String matricula) {
-		
-		boolean isDeleted = false;
-		for (int i = 0; i < listaVehiculos.size() && isDeleted == false; i++) {
-			clsVehiculo clsVehiculo = listaVehiculos.get(i);
-			if(matricula == clsVehiculo.getMatricula()) {
-				listaVehiculos.remove(i);
-				isDeleted = true;
-			}
-			
-		}
-		return isDeleted;
-	}
+
 	
 }
