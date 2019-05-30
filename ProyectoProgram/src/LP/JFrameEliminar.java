@@ -86,7 +86,7 @@ public class JFrameEliminar extends JFrame {
 				clsGestorLN gestor = new clsGestorLN();
 				try {
 					gestor.eliminarVehiculo2((txt_eliminar.getText()));
-					JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente");
+					JOptionPane.showMessageDialog(null, "No se ha encontrado un vehículo con esa matrícula ó ha habido un error en la búsqueda del vehículo");
 				} catch (NumberFormatException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
