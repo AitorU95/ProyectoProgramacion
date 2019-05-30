@@ -1,28 +1,20 @@
 package LP;
 
 import java.awt.EventQueue;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import Comun.itfProperty;
-
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import LN.clsGestorLN;
 import LN.clsVehiculo;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JList;
-import javax.swing.JScrollBar;
 
 public class JFrameMostrar extends JFrame {
 
@@ -86,13 +78,16 @@ public class JFrameMostrar extends JFrame {
 		
 		JTextArea textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
-		
+		String texto = "";
 		for(clsVehiculo a:clsGestorLN.listaVehiculos) {
-			
-			textArea.append((String) a.getProperty("Matricula"));
+			texto +="Matricula: " +  a.getProperty("Matricula") + "\n" +
+					   "Minusválido: " + a.getProperty("Minusvalido") + "\n" +
+					   "Plaza: " + a.getProperty("PlazaVehiculo") + "\n" +
+					   "Zona: " + a.getProperty("ZonaVehiculo")+ "\n" +
+					   "Tipo de vehículo: " + a.getProperty("TipoVehiculo")+ "\n" + "------------------ \n";
 			
 		}
-	    
+	    textArea.append(texto);
 		
 	
 	}

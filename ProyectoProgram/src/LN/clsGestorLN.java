@@ -1,13 +1,13 @@
 package LN;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import Comun.itfProperty;
+import Excepciones.clsListaVacia;
 import Excepciones.clsMatriculaIncorrecta;
 import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
@@ -26,19 +26,11 @@ public class clsGestorLN {
 	 * Creamos los arrays que guardaran los distintos objetos dependiendo de cada clase
 	 */
 	
-	public static ArrayList<clsParking> listaParking;
-	public static ArrayList<clsVehiculo> listaVehiculos;
-	public static ArrayList<clsZona> listaZonas;
-	public static ArrayList<clsPlaza>listaPlaza;
+	public static ArrayList<clsParking> listaParking = new ArrayList<clsParking>();
+	public static ArrayList<clsVehiculo> listaVehiculos = new ArrayList<clsVehiculo>();
+	public static ArrayList<clsZona> listaZonas= new ArrayList<clsZona>();
+	public static ArrayList<clsPlaza>listaPlaza= new ArrayList<clsPlaza>();
 	
-	public clsGestorLN()
-	{
-		listaVehiculos = new ArrayList<clsVehiculo>();
-		listaParking = new ArrayList<clsParking>();
-		listaZonas = new ArrayList<clsZona>();
-		listaPlaza = new ArrayList<clsPlaza>();
-		
-	}
 	
 	
 	
@@ -178,6 +170,8 @@ public class clsGestorLN {
 	
 	public ArrayList<clsVehiculo> mostrarVehiculos() {
 		
+		ordenarVehiculos();
+		
 		return listaVehiculos;
 		
 	}
@@ -194,26 +188,49 @@ public class clsGestorLN {
 		return retorno;
 	}
 	
-	public void EliminarVehiculo(String matricula) throws SQLException {
+	//public void EliminarVehiculo(String matricula) throws SQLException {
 
-		objDatos.BorrarVehiculo(matricula);
+		//objDatos.BorrarVehiculo(matricula);
 
-	}
+	//}
 
-	public void EliminarVehiculoArrayList(String matricula) {
+	//public void EliminarVehiculoArrayList(String matricula) {
+		
+		//clsVehiculo vehiculo = null;
 
-		clsVehiculo vehiculo = null;
+		//vehiculo.setMatricula(matricula);
 
-		vehiculo.setMatricula(matricula);
+		//int b = 0;
+		//for (itfProperty a : listaVehiculos) {
+			//if (a.equals(vehiculo)) {
+				//b = listaVehiculos.indexOf(a);
 
-		int b = 0;
-		for (itfProperty a : listaVehiculos) {
-			if (a.equals(vehiculo)) {
-				b = listaVehiculos.indexOf(a);
-
+			//}
+		//}
+		//listaVehiculos.remove(b);
+	//}
+	
+	public boolean eliminarVehiculo2(String matricula) {
+		
+		boolean isDeleted = false;
+		for (int i = 0; i < listaVehiculos.size() && isDeleted == false; i++) {
+			clsVehiculo objVehiculo = listaVehiculos.get(i);
+			if(matricula == objVehiculo.getMatricula()) {
+				listaVehiculos.remove(i);
+				isDeleted = true;
 			}
+			
 		}
-		listaVehiculos.remove(b);
+		return isDeleted;
+	}
+	
+	public void listaVacia() throws clsListaVacia {
+		
+		if(listaVehiculos.size() == 0) {
+			
+			throw new clsListaVacia();
+			
+		}
 	}
 	
 	/**

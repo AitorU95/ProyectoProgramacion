@@ -213,7 +213,11 @@ public class JFrameIntroducir extends JFrame {
 	
 	class TablaVehiculoModel extends AbstractTableModel
     {
-        private String[] columnNames = {"Matricula","Minusvalido","Plaza","Zona", "Tipo de Vehiculo"};
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private String[] columnNames = {"Matricula","Minusvalido","Plaza","Zona", "Tipo de Vehiculo"};
         Object[][] data;
         
         public  TablaVehiculoModel(ArrayList<itfProperty>clsVehiculo)

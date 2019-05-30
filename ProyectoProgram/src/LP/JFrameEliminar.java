@@ -78,10 +78,16 @@ public class JFrameEliminar extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				clsGestorLN gestor = new clsGestorLN();
-				gestor.eliminarVehiculo(txt_eliminar.getText());
-				JOptionPane.showMessageDialog(null, "Se ha eliminado el vehículo, vas a volver al menu");
-				volver.setVisible(true);
-				dispose();
+				try {
+					gestor.eliminarVehiculo2(txt_eliminar.getText());
+					JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente");
+				} catch (NumberFormatException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNewButton.setBounds(499, 304, 124, 50);

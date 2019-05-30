@@ -1,7 +1,5 @@
 package LN;
 
-import java.io.IOException;
-
 import Comun.itfProperty;
 import Excepciones.PropiedadInexistente;
 
@@ -30,6 +28,12 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 	/**
 	 * Constructor, getters y setter de la clase
 	 */
+	
+	public clsVehiculo(String matricula) {
+		
+		super();
+		
+	}
 	
 	public clsVehiculo(String matricula, String minusvalido, int plazaVehiculo, String zonaVehiculo, String tipoVehiculo) {
 		
@@ -95,7 +99,7 @@ public class clsVehiculo implements itfProperty, Comparable<clsVehiculo>
 		
 		switch(propiedad) 
 		{
-			case "Matricula": return this.getMatricula();
+			case "Matricula": return this.getMatricula(); 
 			case "Minusvalido": return this.isMinusvalido();
 			case "PlazaVehiculo": return this.getPlazaVehiculo();
 			case "ZonaVehiculo" : return this.getZonaVehiculo();

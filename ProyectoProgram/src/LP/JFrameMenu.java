@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Excepciones.clsListaVacia;
+import LN.clsGestorLN;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -78,12 +82,16 @@ public class JFrameMenu extends javax.swing.JFrame {
 				JOptionPane.showMessageDialog(null, "Has seleccionado: Mostrar la lista de vehículos");
 				JFrameMostrar mostrar = null;
 				try {
+					clsGestorLN gestor = new clsGestorLN();
+					gestor.listaVacia();
 					mostrar = new JFrameMostrar();
+					mostrar.setVisible(true);
+					dispose();
+				} catch (clsListaVacia e2) {
+					JOptionPane.showMessageDialog(null, e2.getMessage());
 				} catch (Exception e1) {
 					e1.printStackTrace();
-				}
-				mostrar.setVisible(true);
-				dispose();
+				} 
 			}
 		});
 		btnMostrarLaLista.setBounds(226, 95, 180, 220);
@@ -95,12 +103,16 @@ public class JFrameMenu extends javax.swing.JFrame {
 				JOptionPane.showMessageDialog(null, "Has seleccionado: Eliminar un vehículo");
 				JFrameEliminar eliminar = null;
 				try {
+					clsGestorLN gestor = new clsGestorLN();
+					gestor.listaVacia();
 					eliminar = new JFrameEliminar();
+					eliminar.setVisible(true);
+					dispose();
+				} catch (clsListaVacia e2) {
+					JOptionPane.showMessageDialog(null, e2.getMessage());	
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
-				eliminar.setVisible(true);
-				dispose();
 			}
 		});
 		btnEliminarUnVehculo.setBounds(440, 95, 180, 220);
@@ -109,6 +121,7 @@ public class JFrameMenu extends javax.swing.JFrame {
 		JButton btnSalirDelParking = new JButton("Salir del parking");
 		btnSalirDelParking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "Se va a cerrar la aplicación");
 				System.exit(0);
 			}
 		});
