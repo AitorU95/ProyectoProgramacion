@@ -1,4 +1,5 @@
 import Excepciones.clsMatriculaIncorrecta;
+import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
 import LP.JFrameMenu;
 
@@ -10,7 +11,7 @@ import LP.JFrameMenu;
 public class clsMain
 {
 	
-	public static void main(String[] args) throws clsPlazaOcupada, clsMatriculaIncorrecta
+	public static void main(String[] args) throws clsPlazaOcupada, clsMatriculaIncorrecta, clsMatriculaVehiculoRepetida
 	{
 		
 		/**

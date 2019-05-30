@@ -1,15 +1,24 @@
 package LP;
 
+
+
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.AbstractTableModel;
 
+
+import Comun.itfProperty;
 import Excepciones.clsMatriculaIncorrecta;
 import Excepciones.clsMatriculaVehiculoRepetida;
 import Excepciones.clsPlazaOcupada;
 import LN.clsGestorLN;
+
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,6 +27,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 /**
@@ -28,9 +38,11 @@ import java.awt.event.ActionEvent;
 
 public class JFrameIntroducir extends JFrame {
 
-	/**
-	 * 
-	 */
+	private ArrayList< itfProperty> clsVehiculo;
+	
+	JTable 				jtVehiculo;
+	JScrollPane 		jspVehiculo;
+	JPanel 				jpVehiculo;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txt_matrícula;
@@ -57,6 +69,7 @@ public class JFrameIntroducir extends JFrame {
 	 * Create the frame.
 	 */
 	public JFrameIntroducir() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 659, 501);
 		contentPane = new JPanel();
@@ -136,19 +149,24 @@ public class JFrameIntroducir extends JFrame {
 				clsGestorLN gestor = new clsGestorLN();
 				try {
 					gestor.AltaVehiculo(txt_matrícula.getText(), (String) cmb_minusvalido.getSelectedItem(), Integer.parseInt(txt_plaza.getText()), txt_zona.getText(), (String) cmb_tipoVehiculo.getSelectedItem());
+					JOptionPane.showMessageDialog(null, "Se ha guardado los datos del vehículo, vas a volver al menu");
+				
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
-				} catch (clsMatriculaIncorrecta e) {
-					JOptionPane.showMessageDialog(null, e.getMessage());
-					JOptionPane.showMessageDialog(null, "Vas a volver al menu");
+					
 				} catch (clsMatriculaVehiculoRepetida e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
 					JOptionPane.showMessageDialog(null, "Vas a volver al menu");
+					
+				} catch (clsMatriculaIncorrecta e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+					JOptionPane.showMessageDialog(null, "Vas a volver al menu");
+				
 				} catch (clsPlazaOcupada e) {
 					JOptionPane.showMessageDialog(null, e.getMessage());
 					JOptionPane.showMessageDialog(null, "Vas a volver al menu");
 				}
-				JOptionPane.showMessageDialog(null, "Se ha guardado los datos del vehículo, vas a volver al menu");
+				
 				volver.setVisible(true);
 				dispose();
 			}
@@ -167,4 +185,137 @@ public class JFrameIntroducir extends JFrame {
 		btnSalir.setBounds(39, 381, 140, 50);
 		contentPane.add(btnSalir);
 	}
+	
+	
+	public void CrearTabla() {
+		
+		jtVehiculo = null;
+					
+		//CargarDatos();
+
+		TablaVehiculoModel tcm = new TablaVehiculoModel(clsVehiculo);
+					
+					
+						jtVehiculo = new JTable(tcm);
+						jtVehiculo.setPreferredScrollableViewportSize(new Dimension(500, 70));
+						jtVehiculo.setFillsViewportHeight(true);
+						jtVehiculo.setEnabled(true);
+						jtVehiculo.setRowSelectionAllowed(true);
+						tcm.fireTableDataChanged();
+						
+						jspVehiculo = new JScrollPane(jtVehiculo);
+						jspVehiculo.setBounds(10, 236, 457, 164);
+					getContentPane().add(jspVehiculo);
+					tcm.setData(clsVehiculo);
+				}
+	
+	
+	
+	class TablaVehiculoModel extends AbstractTableModel
+    {
+        private String[] columnNames = {"Matricula","Minusvalido","Plaza","Zona", "Tipo de Vehiculo"};
+        Object[][] data;
+        
+        public  TablaVehiculoModel(ArrayList<itfProperty>clsVehiculo)
+        {
+        	
+        	super();
+        	
+    		int filas = clsVehiculo.size();
+    		int cont;
+    		data=new Object[filas][];
+    		cont=0;
+    		
+    		
+    		//Nos recorremos el map para cargar la variable data[][]
+    		for (itfProperty b: clsVehiculo)
+    		{
+    			Object[]a={b.getProperty("Matricula"),
+    					   b.getProperty("Minusvalido"),
+    					   b.getProperty("PlazaVehiculo"),
+    					   b.getProperty("ZonaVehiculo"),
+    					   b.getProperty("TipoVehiculo")};
+    			data[cont]=a;
+    			cont++;
+    		}
+    		
+        	
+        }
+        
+        public void setData(ArrayList<itfProperty> clsVehiculo) 
+        {
+        	int filas = clsVehiculo.size();
+    		int cont;
+    		data=new Object[filas][];
+    		cont=0;
+    		
+    		
+    		for (itfProperty b: clsVehiculo)
+    		{
+    			Object[]a={b.getProperty("Matricula"),
+ 					   	b.getProperty("Minusvalido"),
+ 					   b.getProperty("PlazaVehiculo"),
+ 					   b.getProperty("ZonaVehiculo"),
+ 					   b.getProperty("TipoVehiculo")};
+    			data[cont]=a;
+    			cont++;
+    		}
+        }
+        
+        
+        
+        
+        
+        public int getColumnCount() 
+        {
+            return columnNames.length;
+        }
+
+        public int getRowCount() {
+            return data.length;
+        }
+
+        public String getColumnName(int col) {
+            return columnNames[col];
+        }
+
+        public Object getValueAt(int row, int col) {
+            return data[row][col];
+        }
+
+        /*
+         * JTable uses this method to determine the default renderer/
+         * editor for each cell.  If we didn't implement this method,
+         * then the last column would contain text ("true"/"false"),
+         * rather than a check box.
+         */
+        public Class getColumnClass(int c) {
+            return getValueAt(0, c).getClass();
+        }
+
+        /*
+         * Don't need to implement this method unless your table's
+         * editable.
+         */
+        public boolean isCellEditable(int row, int col) {
+           
+                return false;
+           
+        }
+
+        /*
+         * Don't need to implement this method unless your table's
+         * data can change.
+         */
+        public void setValueAt(Object value, int row, int col) 
+        {
+            
+            data[row][col] = value;
+            fireTableCellUpdated(row, col);
+
+        }
+
+	
+
+}	
 }

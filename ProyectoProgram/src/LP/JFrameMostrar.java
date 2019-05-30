@@ -2,6 +2,9 @@ package LP;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
+import Comun.itfProperty;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,6 +19,10 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JList;
+import javax.swing.JScrollBar;
 
 public class JFrameMostrar extends JFrame {
 
@@ -24,6 +31,8 @@ public class JFrameMostrar extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	
+	clsGestorLN gestor = new clsGestorLN();
 	
 
 	/**
@@ -51,15 +60,16 @@ public class JFrameMostrar extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		final JFrameMenu volver = new JFrameMenu();
+		contentPane.setLayout(null);
 		
 		JLabel lblAquPuedesVer = new JLabel("Aqu\u00ED puedes ver todos los veh\u00EDculos que hay en el parking");
 		lblAquPuedesVer.setBounds(163, 11, 282, 34);
 		contentPane.add(lblAquPuedesVer);
 		
 		JButton btnVolverAtras = new JButton("Volver atras");
+		btnVolverAtras.setBounds(456, 395, 135, 49);
 		btnVolverAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Vas a volver al menu");
@@ -68,24 +78,22 @@ public class JFrameMostrar extends JFrame {
 			}
 			
 		});
-		btnVolverAtras.setBounds(456, 395, 135, 49);
 		contentPane.add(btnVolverAtras);
 		
-		clsGestorLN gestor = new clsGestorLN();
-		ArrayList<clsVehiculo> listaVehiculos = gestor.mostrarVehiculos();
-		String vehiculo = "";
-		for (clsVehiculo clsVehiculo : listaVehiculos) {
-			vehiculo += "Matrícula: " + clsVehiculo.getMatricula() + "\n" +
-					"Tipo de vehículo: " + clsVehiculo.getTipoVehiculo() + "\n" +
-					"Plaza: " + clsVehiculo.getPlazaVehiculo() + "\n" + 
-					"Zona: " + clsVehiculo.getZonaVehiculo() + "\n" +
-					"---------------------\n";
-		}
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(32, 92, 540, 290);
+		contentPane.add(scrollPane);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 56, 594, 328);
-		contentPane.add(textArea);
-		textArea.setText(vehiculo);
-
-}
+		scrollPane.setViewportView(textArea);
+		
+		for(clsVehiculo a:clsGestorLN.listaVehiculos) {
+			
+			textArea.append((String) a.getProperty("Matricula"));
+			
+		}
+	    
+		
+	
+	}
 }

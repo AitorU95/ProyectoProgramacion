@@ -1,5 +1,9 @@
 package LN;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -35,6 +39,8 @@ public class clsGestorLN {
 		listaPlaza = new ArrayList<clsPlaza>();
 		
 	}
+	
+	
 	
 	/**
 	 * metodo que usa el gestor para crear objetos de tipo parking y añairlos a su correspondiente array
@@ -137,10 +143,37 @@ public class clsGestorLN {
 		ordenarVehiculos();
 		
 		if(!Existe(objVehiculo)) {
+			
 			listaVehiculos.add(objVehiculo);
+			
 		} else {
+			
 			System.out.println("Ya existe este vehículo");
 		}
+	}
+	
+	public void RecuperarDatosVehiculo() throws SQLException {
+
+		Connection objConn = objDatos.conectarBD();
+		ResultSet vehiculosRecuperadoSet = objDatos.ConsultarVehiculos();
+
+		while (vehiculosRecuperadoSet.next()) {
+
+			String matricula = vehiculosRecuperadoSet.getString("matricula");
+			String minusvalido = vehiculosRecuperadoSet.getString("minusvalido");
+			int plaza = vehiculosRecuperadoSet.getInt("plazaVehiculo");
+			String zona = vehiculosRecuperadoSet.getString("ZonaVehiculo");
+			String tipo = vehiculosRecuperadoSet.getString("tipoVehiculo");
+			
+
+			clsVehiculo objVehiculo = new clsVehiculo(matricula, minusvalido, plaza, zona, tipo);
+
+			listaVehiculos.add(objVehiculo);
+
+		}
+
+		objConn.close();
+
 	}
 	
 	public ArrayList<clsVehiculo> mostrarVehiculos() {
@@ -149,6 +182,39 @@ public class clsGestorLN {
 		
 	}
 	
+	
+	public ArrayList<itfProperty> VisualizarVehiculos(){
+		
+		ArrayList <itfProperty> retorno;
+		retorno = new ArrayList <itfProperty>();
+		for(clsVehiculo a:listaVehiculos) {
+			
+			retorno.add(a);
+		}
+		return retorno;
+	}
+	
+	public void EliminarVehiculo(String matricula) throws SQLException {
+
+		objDatos.BorrarVehiculo(matricula);
+
+	}
+
+	public void EliminarVehiculoArrayList(String matricula) {
+
+		clsVehiculo vehiculo = null;
+
+		vehiculo.setMatricula(matricula);
+
+		int b = 0;
+		for (itfProperty a : listaVehiculos) {
+			if (a.equals(vehiculo)) {
+				b = listaVehiculos.indexOf(a);
+
+			}
+		}
+		listaVehiculos.remove(b);
+	}
 	
 	/**
 	 * metodo para comprobar si ya existe un vehículo
@@ -162,7 +228,10 @@ public class clsGestorLN {
 		
 		for(itfProperty b:listaVehiculos) {
 			
-			if(b.equals(_vehiculo)) return true;
+			if(b.equals(_vehiculo)) {
+				
+				return true;
+			}
 			
 		}
 		
@@ -175,12 +244,12 @@ public class clsGestorLN {
 	 * @param nuevoVehiculo
 	 * @throws clsMatriculaVehiculoRepetida
 	 */
-	public static void comprobarMatricula(clsVehiculo nuevoVehiculo) throws clsMatriculaVehiculoRepetida {
+	public static void comprobarMatricula(clsVehiculo vehiculo) throws clsMatriculaVehiculoRepetida {
 		
 		
-		for (clsVehiculo objVehiculo : listaVehiculos) {
+		for (itfProperty d : listaVehiculos) {
 			
-			if(objVehiculo.getMatricula() == nuevoVehiculo.getMatricula() ) {
+			if(d.getProperty("Matricula").equals(vehiculo.getProperty("Matricula")) ) {
 				
 				throw new clsMatriculaVehiculoRepetida();
 				
