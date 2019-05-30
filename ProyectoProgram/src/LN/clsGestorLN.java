@@ -266,7 +266,7 @@ public class clsGestorLN {
 		
 		for (clsVehiculo objVehiculo: listaVehiculos) {
 			
-			if(objVehiculo.getPlazaVehiculo().equals(nuevoVehiculo.getPlazaVehiculo())  && objVehiculo.getZonaVehiculo().equalsIgnoreCase(nuevoVehiculo.getZonaVehiculo())) {
+			if(objVehiculo.getPlazaVehiculo() == nuevoVehiculo.getPlazaVehiculo()  && objVehiculo.getZonaVehiculo().equalsIgnoreCase(nuevoVehiculo.getZonaVehiculo())) {
 				
 				throw new clsPlazaOcupada();
 			}
