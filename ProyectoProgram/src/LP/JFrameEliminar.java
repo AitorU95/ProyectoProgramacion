@@ -66,7 +66,7 @@ public class JFrameEliminar extends JFrame {
 		/**
 		 * Botón para volver al menu principal.
 		 */
-		JButton btnVolverAtras = new JButton("Volver atras");
+		JButton btnVolverAtras = new JButton("Volver atrás");
 		btnVolverAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Vas a volver al menu");
